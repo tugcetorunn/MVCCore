@@ -1,0 +1,27 @@
+﻿@ViewData["mesaj"]
+@ViewBag.Message
+<br />
+@{
+    var urun = (Urun)ViewData["urun"]; // view data object alır, cast etmek gerekir.
+}
+<br />
+
+@urun.UrunId - @urun.UrunAdi - @urun.Fiyat
+<br />
+@ViewBag.Product.UrunId - @ViewBag.Product.UrunAdi - @ViewBag.Product.Fiyat
+
+<hr />
+
+<table class="table table-striped">
+@foreach (Urun product in ViewBag.Urunler) // controller da viewData gönderip cshtml de viewBag kullanabiliyoruz
+{
+    <tr>
+        <td>@product.UrunId</td>
+        <td>@product.UrunAdi</td>
+        <td>@product.Fiyat</td>
+    </tr>
+}
+</table>
+
+
+

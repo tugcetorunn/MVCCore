@@ -1,0 +1,14 @@
+﻿*** controllerdan view e veri aktarma yöntemleri (5)
+- viewData
+- viewBag ***
+- tempData
+- model *************
+- viewModel *****
+
+*** view den controllera veri gönderme yöntemleri
+- requestForm 
+- queryString form get metodu ile ***
+- cookie, session (stateManagement - stateles konuları)
+- IFormCollection
+- Parametre
+- model ************

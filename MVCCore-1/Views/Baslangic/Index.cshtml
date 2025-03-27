@@ -1,0 +1,16 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    "@" -> razor işareti
+*@
+@{
+    
+}
+
+<h1>merhaba mvc</h1>
+@* cshtml sayfasında element ekleme *@
+@* 1. yöntem: düz html *@
+<a class="btn btn-dark" style="color: aqua" href="~/Home/Index">anasayfa</a> @* en hızlısı bu yöntemdir. çünkü diğerlerinde helper lar sunucu tarafında işlemler yapmaya geçiyor düz html native dir. sunucuya gerek kalmaz. *@
+@* 2. yöntem: html helper *@ @* aşağıdaki anonymus obj te @class da kullanabiliriz örn bootstrap için *@
+@Html.ActionLink("Home", "Index", "Home", null, new { @style="color: red" }) @* browserda linke gidip sayfa kaynağını görüntülediğimizde burası için bir html kodu eklendiğini görürüz. *@
+@* 3. yöntem: tag helper *@
+<a class="btn" style="color: orangered; background-color: rebeccapurple" asp-action="Index" asp-controller="Home" onclick="mesajGoster()">anasayfa</a>
