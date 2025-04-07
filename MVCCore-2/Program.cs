@@ -6,6 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// ctor injection için context i container a service olarak eklenmesi gerekir.
+builder.Services.AddDbContext<MarketDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MarketConnectionString")));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

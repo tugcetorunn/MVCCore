@@ -1,0 +1,26 @@
+﻿EF Core ile MVC Core Kullanımı - Code First (Model First)
+(SQL, EF Core, HTML, CSS, Js, MVC Core, C# Advance, OOP, ...)
+
+1- Gerekli paketlerin yüklenmesi
+   - Microsoft.EntityFrameworkCore.SqlServer
+   - Microsoft.EntityFrameworkCore.Tools
+   - Microsoft.EntityFrameworkCore
+
+2- Modellerin oluşturulması
+3- Nav property'lerin oluşturulması
+4- DbContext sınıfının oluşturulması
+5- add-migration komutu
+6- Update-database komutu
+7- Gerekli controller ların oluşturulması
+
+// ürün ve kategori olarak iki model oluşturunuz.
+// ürün - ürünId, ürünAd, ürünFiyat, kategoriId, resim, açıklama
+
+// if (!optionsBuilder.IsConfigured)
+{
+    optionsBuilder.UseSqlServer("Server=.;Database=MarketDb;Integrated Security=true;");
+}
+
+// transient - en uzun süreli olandır. sürekli oluşturulur.
+// singleton - tek bir instance oluşturulur. ilk çağrıldığında oluşturulur.
+// scoped - 

@@ -112,6 +112,7 @@ namespace MVCCore_1.Controllers
             return Content(ad + " " + soyad + " " + yas);
         }
 
+        // model kullanımı
         public IActionResult VerileriYakalaWithParameterModel(Personel personel)
         {
             return Content(personel.Ad + " " + personel.Soyad + " " + personel.Yas);
