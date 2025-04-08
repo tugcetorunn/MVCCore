@@ -1,0 +1,61 @@
+﻿@model MVCCore_3_ViewModel.ViewModels.CreateProductFormVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>CreateProductFormVM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <table class="form-group">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <tr>
+                <td><label asp-for="Product.ProductName"></label></td>
+                <td><input type="text" asp-for="Product.ProductName" class="form-control" /></td>
+                <td><span asp-validation-for="Product.ProductName" class="text-danger"></span></td>
+
+            </tr>
+            <tr>
+                <td><label asp-for="Product.Price"></label></td>
+                <td><input type="text" asp-for="Product.Price" class="form-control" /></td>
+                <td><span asp-validation-for="Product.Price" class="text-danger"></span></td>
+            </tr>
+            <tr>
+                <td><label asp-for="Categories"></label></td>
+                <td>
+                    <select asp-for="Product.CategoryId" asp-items="Model.Categories" class="form-control"></select>
+                </td>
+                
+            </tr>
+            <tr>
+                <td><label asp-for="Product.Description"></label></td>
+                <td><textarea cols="60" rows="5" asp-for="Product.Description" class="form-control"></textarea></td>
+                <td><span asp-validation-for="Product.Description" class="text-danger"></span></td>
+            </tr>
+            <tr>
+                <td><label asp-for="Product.ImageUrl"></label></td>
+                <td><input type="file" asp-for="Product.ImageUrl" class="form-control" /></td>
+                <td><span asp-validation-for="Product.ImageUrl" class="text-danger"></span></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </td>
+            </tr>
+            </form>
+        </table>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
