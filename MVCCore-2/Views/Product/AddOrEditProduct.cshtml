@@ -5,34 +5,41 @@
 }
 
 <table class="form-group">
-    <form asp-action="AddProduct" method="post" enctype="multipart/form-data"> @* dosya yükleme için enctype bu şekilde ayarlamamız gerek. çünkü örn resimler binary formatındadır. *@
+    <form asp-action="AddOrEditProduct" method="post" enctype="multipart/form-data"> @* dosya yükleme için enctype bu şekilde ayarlamamız gerek. çünkü örn resimler binary formatındadır. *@
+        <input type="hidden" asp-for="ProductId" /> @* id gönderilmezse yeni kayıtmış görür ve ekleme yapar. *@
         <tr>
             <td><label asp-for="ProductName"></label></td>
             <td><input type="text" asp-for="ProductName" class="form-control" /></td>
+            <td><span asp-validation-for="ProductName" class="text-danger"></span></td>
+
         </tr>
         <tr>
             <td><label asp-for="Price"></label></td>
             <td><input type="text" asp-for="Price" class="form-control" /></td>
+        <td><span asp-validation-for="Price" class="text-danger"></span></td>
         </tr>
         <tr>
             <td><label asp-for="Category"></label></td>
             <td>
                 <select asp-for="CategoryId" asp-items="@ViewBag.Categories" class="form-control"></select> @* viewModel kullanmak daha iyi kullanım açısından *@
             </td>
+
         
         </tr>
         <tr>
             <td><label asp-for="Description"></label></td>
             <td><textarea cols="60" rows="5" asp-for="Description" class="form-control"></textarea></td>
+        <td><span asp-validation-for="Description" class="text-danger"></span></td>
         
         </tr>
         <tr>
             <td><label asp-for="ImageUrl"></label></td>
-            <td><input type="file" name="imageName" asp-for="ImageUrl" class="form-control" /></td>
+            <td><input type="file" name="imageName" class="form-control" /></td>
+        <td><span asp-validation-for="ImageUrl" class="text-danger"></span></td>
         
         </tr>
         <tr>
-            <td><button type="submit">Ekle</button></td>
+            <td><button type="submit">Ekle/Düzenle</button></td>
         </tr>
     </form>
 </table>

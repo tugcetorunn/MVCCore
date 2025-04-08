@@ -7,7 +7,7 @@
 <h1>GetProductList</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="AddOrEditProduct">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -60,9 +60,13 @@
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
 
-                <a asp-action="EditProduct" asp-route-id="@item.ProductId">Edit</a>
+                <a asp-action="AddOrEditProduct" asp-route-id="@item.ProductId">Edit</a>
                 <a asp-action="GetProductDetail" asp-route-id="@item.ProductId">Detail</a>
-                <a asp-action="DeleteProduct" asp-route-id="@item.ProductId">Delete</a>
+                @* <a asp-action="DeleteProduct" asp-route-id="@item.ProductId" onclick="return confirm('are you sure')">Delete</a> *@
+                <form asp-action="DeleteProduct" method="post">
+                    <input type="hidden" name="id" value="@item.ProductId" />
+                    <input type="submit" value="delete" onclick="return confirm('are you sure')" />
+                </form>
             </td>
         </tr>
 }
