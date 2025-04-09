@@ -7,7 +7,7 @@
 namespace MVCCore_5_Uygulama.Migrations
 {
     /// <inheritdoc />
-    public partial class initialDb : Migration
+    public partial class initialdb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -64,6 +64,7 @@ namespace MVCCore_5_Uygulama.Migrations
                     SayfaSayisi = table.Column<int>(type: "int", nullable: false),
                     KapakResmiUrl = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Ozet = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    BasimSayisi = table.Column<int>(type: "int", nullable: false),
                     YazarId = table.Column<int>(type: "int", nullable: false),
                     YayineviId = table.Column<int>(type: "int", nullable: false),
                     KategoriId = table.Column<int>(type: "int", nullable: false)

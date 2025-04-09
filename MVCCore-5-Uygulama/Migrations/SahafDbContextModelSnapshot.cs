@@ -74,6 +74,9 @@ namespace MVCCore_5_Uygulama.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("KitapId"));
 
+                    b.Property<int>("BasimSayisi")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Fiyat")
                         .HasColumnType("money");
 

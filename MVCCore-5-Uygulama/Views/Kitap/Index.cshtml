@@ -1,75 +1,75 @@
 ﻿@model IEnumerable<MVCCore_5_Uygulama.ViewModels.KitapGetirVM>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Kitap Listesi";
 }
 
-<h1>Index</h1>
+<h1>Kitap Listesi</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Ekle">Yeni Kitap Ekle</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.KitapAdi)
+                Kapak Resmi
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fiyat)
+                Kitap Adı
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SayfaSayisi)
+                Yazar
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.KapakResmiUrl)
+                Kategori
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ozet)
+                Sayfa Sayısı
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Yazar)
+                Özet
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Yayinevi)
+                Yayınevi
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Kategori)
+                Fiyat
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+            <tr>
+            <td>
+                <img src="~/images/@item.KapakResmiUrl" width="100px" height="150px" />
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.KitapAdi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fiyat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SayfaSayisi)
-            </td>
-            <td>
-                <img src="@item.KapakResmiUrl" style="width:100px; height:150px;" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ozet)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Yazar)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Yayinevi)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Kategori)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.DisplayFor(modelItem => item.SayfaSayisi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ozet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yayinevi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fiyat) TL
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Duzenle", new { id=item.KitapId }) |
+                @Html.ActionLink("Detay", "Detay", new { id=item.KitapId }) |
+                @Html.ActionLink("Sil", "Sil", new { id=item.KitapId })
             </td>
         </tr>
 }

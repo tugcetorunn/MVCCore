@@ -6,61 +6,57 @@
 
 <h1>Ekle</h1>
 
-<h4>KitapEkleVM</h4>
+<h4>Yeni Kitap</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Ekle" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Kitap.KitapAdi" class="control-label"></label>
+                <label asp-for="Kitap.KitapAdi" class="control-label">Kitap Adı</label>
                 <input asp-for="Kitap.KitapAdi" class="form-control" />
-                <span asp-validation-for="Kitap.KitapAdi" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Kitap.Fiyat" class="control-label"></label>
+                <label asp-for="Kitap.Fiyat" class="control-label">Fiyat</label>
                 <input asp-for="Kitap.Fiyat" class="form-control" />
-                <span asp-validation-for="Kitap.Fiyat" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Kitap.SayfaSayisi" class="control-label"></label>
+                <label asp-for="Kitap.SayfaSayisi" class="control-label">Sayfa Sayısı</label>
                 <input asp-for="Kitap.SayfaSayisi" class="form-control" />
-                <span asp-validation-for="Kitap.SayfaSayisi" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Kitap.Ozet" class="control-label"></label>
+                <label asp-for="Kitap.BasimSayisi" class="control-label">Basım Sayısı</label>
+                <input asp-for="Kitap.BasimSayisi" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Kitap.Ozet" class="control-label">Özet</label>
                 <textarea asp-for="Kitap.Ozet" class="form-control"></textarea>
-                <span asp-validation-for="Kitap.Ozet" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Kitap.YazarId" class="control-label"></label>
+                <label asp-for="Kitap.YazarId" class="control-label">Yazar</label>
                 <select asp-for="Kitap.YazarId" asp-items="Model.Yazarlar" class="form-control"></select>
-                <span asp-validation-for="Kitap.YazarId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Kitap.YayineviId" class="control-label"></label>
+                <label asp-for="Kitap.YayineviId" class="control-label">Yayınevi</label>
                 <select asp-for="Kitap.YayineviId" asp-items="Model.Yayinevleri" class="form-control"></select>
-                <span asp-validation-for="Kitap.YayineviId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Kitap.KategoriId" class="control-label"></label>
+                <label asp-for="Kitap.KategoriId" class="control-label">Kategori</label>
                 <select asp-for="Kitap.KategoriId" asp-items="Model.Kategoriler" class="form-control"></select>
-                <span asp-validation-for="Kitap.KategoriId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Kitap.KapakResmiUrl" class="control-label"></label>
-                <input asp-for="Kitap.KapakResmiUrl" type="file" class="form-control" />
-                <span asp-validation-for="Kitap.KapakResmiUrl" class="text-danger"></span>
+                <label asp-for="Kitap.KapakResmiDosya" class="control-label">Kapak Resmi</label>
+                <input asp-for="Kitap.KapakResmiDosya" type="file" class="form-control" />
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group mt-2">
+                <input type="submit" value="Ekle" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="mt-2">
+    <a asp-action="Index">Kitap Listesini Gör</a>
 </div>
 
 @section Scripts {

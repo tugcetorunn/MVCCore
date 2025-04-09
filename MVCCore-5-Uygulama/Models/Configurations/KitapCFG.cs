@@ -16,6 +16,7 @@ namespace MVCCore_5_Uygulama.Models.Configurations
                 .IsRequired()
                 .HasMaxLength(100);
             builder.Property(k => k.Ozet).HasMaxLength(200).IsRequired();
+            builder.Property(k => k.BasimSayisi).IsRequired();
         }
     }
 }

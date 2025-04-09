@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCCore_5_Uygulama.Migrations
 {
     [DbContext(typeof(SahafDbContext))]
-    [Migration("20250409133216_initialDb")]
-    partial class initialDb
+    [Migration("20250409213528_initialdb")]
+    partial class initialdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,6 +76,9 @@ namespace MVCCore_5_Uygulama.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("KitapId"));
+
+                    b.Property<int>("BasimSayisi")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Fiyat")
                         .HasColumnType("money");
