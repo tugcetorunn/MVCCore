@@ -1,0 +1,60 @@
+﻿@model KullaniciEkleVM
+
+<form method="post" asp-action="KullaniciEkle">
+    <table>
+        <tr>
+            <td>
+                <label asp-for="Ad" class="control-label"></label>
+            </td>
+            <td>
+                <input asp-for="Ad" class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Soyad" class="control-label"></label>
+            </td>
+            <td>
+                <input asp-for="Soyad" class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="KullaniciAdi" class="control-label"></label>
+            </td>
+            <td>
+                <input asp-for="KullaniciAdi" class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Sifre" class="control-label"></label>
+            </td>
+            <td>
+                <input asp-for="Sifre" class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="SifreTekrari" class="control-label"></label>
+            </td>
+            <td>
+                <input asp-for="SifreTekrari" class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                @Html.ValidationSummary() @* html helper ile validation summary *@
+                <div asp-validation-summary="All"></div> @* tag helper ile validation summary *@
+            </td>
+        </tr>
+        <!-- Add other fields similarly -->
+    </table>
+</form>

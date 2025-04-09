@@ -66,5 +66,52 @@ namespace MVCCore_3_ViewModel.Controllers
 
             return View(product);
         }
+
+        public IActionResult Edit(int id)
+        {
+            var product = context.Products.FirstOrDefault(x => x.ProductId == id);
+            UpdateProductFormVM vM = new UpdateProductFormVM() { 
+                Product = new UpdateProductVM { 
+                    ProductId = id,
+                    CategoryId = product.CategoryId,
+                    Description = product.Description,
+                    ImageUrl = product.ImageUrl,
+                    Price = product.Price,
+                    ProductName = product.ProductName 
+                }
+            }; // select, where ile de yapılabilir.
+
+            vM.Categories = new SelectList(context.Categories.ToList(), "CategoryId", "Name");
+            return View(vM);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(UpdateProductVM product)
+        {
+            var oldProduct = context.Products.Find(product.ProductId);
+
+            oldProduct.ProductName = product.ProductName;
+            oldProduct.Price = product.Price;
+            oldProduct.Description = product.Description;
+            oldProduct.CategoryId = product.CategoryId;
+
+            if (product.ImageFile != null)
+                oldProduct.ImageUrl = FileOperations.UploadImage(product.ImageFile);
+
+            context.SaveChanges(); // image null old hata veriyor. düzeldi. 2. projede bu hata devam ediyor bakılacak.
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var product = context.Products.FirstOrDefault(x => x.ProductId == id);
+
+            context.Products.Remove(product);
+            context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }

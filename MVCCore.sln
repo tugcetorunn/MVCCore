@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore-2", "MVCCore-2\MVCC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore-3-ViewModel", "MVCCore-3-ViewModel\MVCCore-3-ViewModel.csproj", "{28E5A130-0AB9-47C6-BDA8-94E3561A52DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore-4-Validations", "MVCCore-4-Validations\MVCCore-4-Validations.csproj", "{0F779A87-5AF0-4A7D-8DD8-6C1319DA8A83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore-5-Uygulama", "MVCCore-5-Uygulama\MVCCore-5-Uygulama.csproj", "{9B35368C-1D19-4159-B97C-2982D4638869}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{28E5A130-0AB9-47C6-BDA8-94E3561A52DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28E5A130-0AB9-47C6-BDA8-94E3561A52DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28E5A130-0AB9-47C6-BDA8-94E3561A52DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F779A87-5AF0-4A7D-8DD8-6C1319DA8A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F779A87-5AF0-4A7D-8DD8-6C1319DA8A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F779A87-5AF0-4A7D-8DD8-6C1319DA8A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F779A87-5AF0-4A7D-8DD8-6C1319DA8A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B35368C-1D19-4159-B97C-2982D4638869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B35368C-1D19-4159-B97C-2982D4638869}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B35368C-1D19-4159-B97C-2982D4638869}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B35368C-1D19-4159-B97C-2982D4638869}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

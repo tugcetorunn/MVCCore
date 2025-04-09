@@ -1,0 +1,12 @@
+﻿Kitap
+
+Bir sahaf için kitap verilerinin tutulacağı web uygulaması mvc core üzerinde yazılacak.
+
+Veritabanı modellemesi ef core model first yaklaşımı ile yapılmalı. ilişkiler çoka çok olmayacak.
+Kitap - Yazar - Yayınevi - Kategori
+Kitap -> ad, fiyat, kapak resmi, özet, sayfa sayısı
+Yazar -> ad, soyad, biyografi
+Kategoriler; roman, hikaye, deneme, ...
+
+1- ilk aşamada ef core ile db yi oluşturunuz.
+2- kitap ekleme ve listeleme kısımlarını yazınız. gerekli durumlar için view model oluşturunuz.
