@@ -10,3 +10,8 @@ Kategoriler; roman, hikaye, deneme, ...
 
 1- ilk aşamada ef core ile db yi oluşturunuz.
 2- kitap ekleme ve listeleme kısımlarını yazınız. gerekli durumlar için view model oluşturunuz.
+
+custom helpers
+1- html helpers
+	extension method olarak oluşturulurlar.
+2- tag helpers

@@ -67,10 +67,10 @@
                 @Html.DisplayFor(modelItem => item.Fiyat) TL
             </td>
             <td>
-                @Html.ActionLink("Düzenle", "Duzenle", new { id=item.KitapId }) |
-                @Html.ActionLink("Detay", "Detay", new { id=item.KitapId }) |
-                @Html.ActionLink("Sil", "Sil", new { id=item.KitapId })
-            </td>
+                <a asp-action="Duzenle" asp-route-id="@item.KitapId">Düzenle</a> |
+                <a asp-action="Detay" asp-route-id="@item.KitapId">Detay</a> |
+                <a asp-action="Sil" asp-route-id="@item.KitapId" onclick="return confirm('Emin misiniz?')">Sil</a>
+            </td> 
         </tr>
 }
     </tbody>

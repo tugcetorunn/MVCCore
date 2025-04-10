@@ -75,7 +75,7 @@ namespace MVCCore_3_ViewModel.Controllers
                     ProductId = id,
                     CategoryId = product.CategoryId,
                     Description = product.Description,
-                    ImageUrl = product.ImageUrl,
+                    ImageUrl = product.ImageUrl, // güncelleme yapabilmemiz için string olarak tutulan imageUrl i de vm e eklememiz gerek dosya yüklemek için de iformfile tipinde veri olması gerek. yani image için hem string hem iformfile olmalı.
                     Price = product.Price,
                     ProductName = product.ProductName 
                 }

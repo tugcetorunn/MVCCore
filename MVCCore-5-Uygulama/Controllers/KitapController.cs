@@ -17,8 +17,16 @@ namespace MVCCore_5_Uygulama.Controllers
         }
         public IActionResult Index()
         {
-            var kitaplar = context.Kitaplar.Select(x => new KitapGetirVM
+            var kitaplar = KitapMapleme().ToList();
+
+            return View(kitaplar);
+        }
+
+        private IQueryable<KitapGetirVM> KitapMapleme()
+        {
+            var kitap = context.Kitaplar.Select(x => new KitapGetirVM
             {
+                KitapId = x.KitapId, // id eklememizin sebebi index ten gittiğimiz detay düzenle sil sayfalarında id nin gönderilmesi gerekiyor.
                 KitapAdi = x.KitapAdi,
                 Fiyat = x.Fiyat,
                 SayfaSayisi = x.SayfaSayisi,
@@ -28,18 +36,25 @@ namespace MVCCore_5_Uygulama.Controllers
                 Yazar = x.Yazar.YazarAdSoyad,
                 Yayinevi = x.Yayinevi.YayineviAdi,
                 Kategori = x.Kategori.KategoriAdi
-            }).ToList();
+            });
 
-            return View(kitaplar);
+            return kitap;
+        }
+
+        public IActionResult Detay(int id)
+        {
+            var kitap = KitapMapleme().Where(x => x.KitapId == id).FirstOrDefault();
+
+            return View(kitap);
         }
 
         public IActionResult Ekle()
         {
             KitapEkleFormVM vm = new KitapEkleFormVM
             {
-                Kategoriler = new SelectList(context.Kategoriler.ToList(), "KategoriId", "KategoriAdi"),
-                Yazarlar = new SelectList(context.Yazarlar.ToList(), "YazarId", "YazarAdSoyad"),
-                Yayinevleri = new SelectList(context.Yayinevleri.ToList(), "YayineviId", "YayineviAdi")
+                Kategoriler = SelectListOlustur()[0],
+                Yazarlar = SelectListOlustur()[1],
+                Yayinevleri = SelectListOlustur()[2]
             };
 
             return View(vm);
@@ -71,14 +86,107 @@ namespace MVCCore_5_Uygulama.Controllers
 
             KitapEkleFormVM vm = new KitapEkleFormVM
             {
-                Kategoriler = new SelectList(context.Kategoriler.ToList(), "KategoriId", "KategoriAdi"),
-                Yazarlar = new SelectList(context.Yazarlar.ToList(), "YazarId", "YazarAdSoyad"),
-                Yayinevleri = new SelectList(context.Yayinevleri.ToList(), "YayineviId", "YayineviAdi")
+                Kategoriler = SelectListOlustur()[0],
+                Yazarlar = SelectListOlustur()[1],
+                Yayinevleri = SelectListOlustur()[2]
             };
 
             return View(vm);
         }
 
+        public List<SelectList> SelectListOlustur()
+        {
+            List<SelectList> selectLists = new List<SelectList>
+            {
+                new SelectList(context.Kategoriler.ToList(), "KategoriId", "KategoriAdi"),
+                new SelectList(context.Yazarlar.ToList(), "YazarId", "YazarAdSoyad"),
+                new SelectList(context.Yayinevleri.ToList(), "YayineviId", "YayineviAdi")
+            };
+            return selectLists;
+        }
 
+        public IActionResult Duzenle(int id)
+        {
+            KitapGuncelleFormVM frm = new();
+            var kitap = context.Kitaplar.Select(x => new KitapGuncelleVM
+            {
+                KitapId = x.KitapId,
+                KitapAdi = x.KitapAdi,
+                Fiyat = x.Fiyat,
+                SayfaSayisi = x.SayfaSayisi,
+                KapakResmiUrl = x.KapakResmiUrl,
+                Ozet = x.Ozet,
+                BasimSayisi = x.BasimSayisi
+            }).Where(x => x.KitapId == id).SingleOrDefault();
+
+            frm.Kitap = kitap;
+
+            frm.Kategoriler = SelectListOlustur()[0];
+            frm.Yazarlar = SelectListOlustur()[1];
+            frm.Yayinevleri = SelectListOlustur()[2];
+
+            return View(frm);
+        }
+
+        [HttpPost]
+        public IActionResult Duzenle(KitapGuncelleVM kitap)
+        {
+            if (kitap.KapakResmiDosya == null && string.IsNullOrEmpty(kitap.KapakResmiUrl))
+            {
+                ModelState.AddModelError("KapakResmiUrl", "Kapak resmi seçmelisiniz.");
+            } // gerek yok ama kullanım örneği.
+
+            if (ModelState.IsValid)
+            {
+                Kitap guncelKitap = new()
+                {
+                    KitapId = kitap.KitapId,
+                    KitapAdi = kitap.KitapAdi,
+                    SayfaSayisi = kitap.SayfaSayisi,
+                    BasimSayisi = kitap.BasimSayisi,
+                    Ozet = kitap.Ozet,
+                    YazarId = kitap.YazarId,
+                    Fiyat = kitap.Fiyat,
+                    KategoriId = kitap.KategoriId,
+                    YayineviId = kitap.YayineviId
+                };
+
+                if (kitap.KapakResmiDosya != null)
+                {
+                    guncelKitap.KapakResmiUrl = FileOperations.UploadImage(kitap.KapakResmiDosya);
+                }
+
+                context.Kitaplar.Update(guncelKitap);
+                context.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
+            KitapGuncelleFormVM vm = new KitapGuncelleFormVM
+            {
+                Kategoriler = SelectListOlustur()[0],
+                Yazarlar = SelectListOlustur()[1],
+                Yayinevleri = SelectListOlustur()[2]
+            };
+
+            return View(vm);
+            
+        }
+
+        [HttpPost] // get metoduyşa da siler fakat güvenli değil, get metodu direk action ı çalıştırmaya yönelik olduğu için url i girdiğimizde js çalışmadan yani kullanıcıya onay vermeden siler. o yüzden post metodu kullanıyoruz.
+        public IActionResult Sil(int id)
+        {
+            var kitap = context.Kitaplar.Where(x => x.KitapId == id).FirstOrDefault();
+            if (kitap != null)
+            {
+                context.Kitaplar.Remove(kitap);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        // detay ve liste için viewmodeller düzenlenecek ayrı vm olacak. ne gösterilecekse.
+        // display name attributeleri ekle
+        // sayfasayisi short olsun
     }
 }

@@ -4,9 +4,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MVCCore_5_Uygulama.ViewModels
 {
-    public class KitapEkleVM
+    public class KitapGuncelleVM
     {
-        [BuKitapVarMiEklerkenValid]
+        public int KitapId { get; set; }
+        [BuKitapVarMiGuncellerkenValid]
         [Required(ErrorMessage = "Kitap adı boş geçilemez.")]
         [StringLength(100, ErrorMessage = "Kitap adı en fazla 100 karakter olabilir.")]
         public string KitapAdi { get; set; }
@@ -17,7 +18,8 @@ namespace MVCCore_5_Uygulama.ViewModels
         [Range(1, int.MaxValue, ErrorMessage = "Sayfa sayısı 1'den büyük olmalıdır.")]
         public int SayfaSayisi { get; set; }
         [Required(ErrorMessage = "Kapak resmi boş geçilemez.")]
-        public IFormFile KapakResmiDosya { get; set; }
+        public string KapakResmiUrl { get; set; } // guncelle view ine kitabın bilgileri yükleneceği için gerekli. guncelleme işlemi için gerekli değil ama güncellenmiş hali için gerekli. o yüzden burada var ama guncelleme post metodunda yok
+        public IFormFile? KapakResmiDosya { get; set; }
         [Required(ErrorMessage = "Özet boş geçilemez.")]
         [StringLength(200, ErrorMessage = "Özet en fazla 200 karakter olabilir.")]
         public string Ozet { get; set; }
@@ -30,6 +32,5 @@ namespace MVCCore_5_Uygulama.ViewModels
         public int YayineviId { get; set; }
         [Required(ErrorMessage = "Kategori boş geçilemez.")]
         public int KategoriId { get; set; }
-        
     }
 }

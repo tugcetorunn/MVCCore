@@ -6,7 +6,7 @@ namespace MVCCore_5_Uygulama.Models
     public class Kitap
     {
         public int KitapId { get; set; }
-        [BuKitapVarMiValid]
+        [BuKitapVarMiEklerkenValid]
         [Required(ErrorMessage = "Kitap adı boş geçilemez.")]
         [StringLength(100, ErrorMessage = "Kitap adı en fazla 100 karakter olabilir.")]
         public string KitapAdi { get; set; }

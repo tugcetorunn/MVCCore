@@ -33,7 +33,7 @@
                 <textarea asp-for="Kitap.Ozet" class="form-control"></textarea>
             </div>
             <div class="form-group">
-                <label asp-for="Kitap.YazarId" class="control-label">Yazar</label>
+                <label asp-for="Kitap.YazarId" class="control-label">Yazar</label> @* katmanlı mimari kullandığımızda bu nav prop ları id leriyle kullanmayacağız çünkü örn yazara ait biyografi bilgisi var uzun bir bilgi bunları da taşımış oluyoruz. *@
                 <select asp-for="Kitap.YazarId" asp-items="Model.Yazarlar" class="form-control"></select>
             </div>
             <div class="form-group">

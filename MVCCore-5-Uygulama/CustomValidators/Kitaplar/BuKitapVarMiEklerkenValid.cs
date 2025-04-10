@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MVCCore_5_Uygulama.CustomValidators.Kitaplar
 {
-    public class BuKitapVarMiValid : ValidationAttribute
+    public class BuKitapVarMiEklerkenValid : ValidationAttribute
     {
         protected override ValidationResult IsValid(object? value, ValidationContext validationContext)
         {

@@ -1,0 +1,20 @@
+﻿@using MVCCore_5_Uygulama.CustomHelpers
+@addTagHelper *, MVCCore-5-Uygulama
+@* namespace te tire varsa namespace te yazıldığı gibi değil proje adını direk vermek gerekiyor veya 09-10 gibi tarihle başlıyorsa da başlangıçta otomatik yazan _ yi silince çalışıyor. *@
+@* @Html.ActionLink("Kitap", "Index", "Kitap") *@ @* bu extension methodu kullandığımızda sayfa yüklendiğinde sayfa kaynağında görüyoruz ki <a href="/Kitap">Kitap</a> eklenmiş *@
+
+<marquee direction="right">Son Dakika....</marquee> @* html5 ile birlikte bunu kullanmayın diyorlar. *@
+
+@* @Html.HaberBandi("Şok Şok Şok...") *@
+
+@{
+    var sehirler = new List<object>() { "bursa", "ankara", "istanbul" };
+}
+
+@Html.ListeGetir(sehirler) @* <ul><li>bursa</li><li>ankara</li><li>istanbul</li></ul> *@
+
+<haber-bandi ekranda-gozukecek-mesaj="hello tag helper"></haber-bandi> @* <marquee>hello tag helper</marquee> *@
+
+<haber-bandi ekranda-gozukecek-mesaj="slm" asp-yazi-yonu="@YaziYonu.Right"></haber-bandi>
+
+<Yaz asp-yazi-yonu="@YaziYonu.Right" ekranda-gozukecek-mesaj="artık bu tag in adı yazdır"></Yaz>
