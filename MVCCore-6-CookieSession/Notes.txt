@@ -1,0 +1,58 @@
+State Management 
+
+*** http => stateless((no session) herhangi bir veri taþýmasý yapmaz)
+veri taþýyan yapýlar:
+session => stateful (veri taþýr). sunucu tarafýnda tutulur. (server-side)
+oturumla alakalýdýr. kiþi oturum açtýðýnda session baþlar. kullanýcýya ait session id verilir. oturum kapandýðýnda session sona erer.
+session id ile session bilgilerine eriþilir. (session id, cookie de tutulur)
+yaþamsüresi belirlenmezse default 20 dk
+sepet tutulmasý uygun deðildir. bir süre sonra silinir çünkü. ram de tutulur
+
+cookie => kullanýcýnýn kendi browserýnda tutulur. diskte tutulur.
+client-side (client tarafýnda saklanýr) (bilgi kýrýntýsý manasýnda cookie denmiþ) 
+(çok önemli verileri cookie üzerinde tutmamak lazým. çünkü sunucular cookie lerimizi okuyabiliyor.)
+session id lerimizi tutuyor.
+(sepete ekleme cookie olarak tutmak mantýksýzdýr, yapýlabilir fakat baþka bir browser da açtýðýmýzda sepet boþ gelir.) 
+kiþiselleþtirme saðlar (örn. profile özel ayarlar, tema ayarlarý, dil ayarlarý)
+4 kbyte kadar veri tutabilir. (4kb) (cookie baþýna)
+
+queryString => veri client tarafýnda tutulur. server-side tarafýnda eriþilebilir. (server tarafýnda saklanýr)
+
+local storage??
+session storage??
+
+asp.net core da session kullanýmýndaki deðiþiklikler;
+- doðrudan session kullanýmý engellenmiþtir.
+    program cs de addsession() ve usesession() metodu ile session kullanýlabilir.
+- 1 dk altýnda yaþam süresi belirlenebilir
+- eskiden session otomatik olarak object veri beklerdi
+    core ile ya int ya string ya da binary.
+    
+
+** tcp, ip, udp, http, https, smtp, ftp, pop3, imap
+
+
+        //public IActionResult SetSession()
+        //{
+        //    HttpContext.Session.SetString("SessionKey", "SessionValue");
+        //    return RedirectToAction("Index");
+        //}
+
+        
+            //Request.QueryString.TryGetValue("id", out var id);
+
+                        //// Cookie oluþturma
+            //HttpContext.Response.Cookies.Append("isim", "Ahmet");
+            //HttpContext.Response.Cookies.Append("soyisim", "Yýlmaz");
+            //return Content("Cookie Oluþturuldu");
+
+urundb kullanarak on yuzde tum ürünleri listeleyiniz
+sonra sepeteekle diye bir link ya da buton oluþturunuz
+kullanýcýnýn sectiði tum urunleri cerez uzerinde tutunuz
+sepetteki urunler diye bir link ya da buton oluþturunuz
+kullanýcý secince sepete attýðý urunleri görmeli
+
+            //// session olustur
+            //HttpContext.Session.SetString("session", "Session icerisinde tutulacak veri");
+            //return Content("Session olusturuldu...");
+
