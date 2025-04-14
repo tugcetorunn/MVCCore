@@ -1,0 +1,6 @@
+﻿Uyelik sistemi olan bir veritabanının sistemini mvc core sql server ve session yapılarını kullanarak oluşturunuz.
+uye -> ad, soyad, kullanıcı adı, şifre(hash lenerek tutulmalı)
+Galeri -> (2 tabloda (araç, marka)) plaka, marka, model, fiyat, renk, açıklama
+Sadece üye olanlar veri ekleyebilirken, diğerleri sadece görebilmeli.
+
+https://www.borakasmer.com/net-coreda-encrypt-decrypt-islemleri-ve-hasden-farki/
