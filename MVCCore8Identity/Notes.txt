@@ -1,0 +1,11 @@
+﻿identity ile oluşturulan login register sayfaları razor pages olarak oluşturulmuştur. yani eski usül controller mantığı olmadan view de işlemler de cshtml sayfasındadır.
+session bilgisini hashleyerek cookie de tutuyor.
+id otomatik nvarchar olarak kaydedilir guid kullanılabileceğinden dolayı. biz genelde id yi int tutarız neden? performanstan dolayı.
+
+(localdb) -> sql server a ihtiyaç duymadan db kullanmamızı sağlar. oluşan db yi belgelere mdf dosyası olarak kaydeder. birden fazla kişi bağlanamama sıkıntısı vardır. ve sql server in performansını göremeyiz.
+sql varsa?? sql de mi açılıyor db kontrol et...
+
+sınavda kullanman gerekebilecek yapılar:
+- identity
+- validations
+- attributes

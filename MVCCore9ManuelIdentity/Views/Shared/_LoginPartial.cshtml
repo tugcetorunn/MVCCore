@@ -1,0 +1,22 @@
+﻿@* identity 9. adım kullanıcı girişi yapılıp yapılmamasına göre nav link ekleme *@
+@* <b>@User.Identity.Name</b> @* @User identity kullanılmadıysa veya kullanıcı gelmediyse burası direk null gelir kullanıcı gerçekten var mı bu şekilde kontrol edebiliriz. *@
+
+@if (User.Identity.Name == null)
+{
+    <a asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
+    <a asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+}
+else
+{
+    @* identity 19. adım yetkiye göre panele yönlendirme *@
+    if (User.IsInRole("Admin"))
+    {
+        <a asp-area="AdminPanel" asp-controller="Panel" asp-action="Index">Admin Paneli'ne git</a>
+    }
+    else
+    {
+        <a asp-area="UyePanel" asp-controller="Panel" asp-action="Index">Üye Paneli'ne git</a>
+    }
+    <a asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+}
+
