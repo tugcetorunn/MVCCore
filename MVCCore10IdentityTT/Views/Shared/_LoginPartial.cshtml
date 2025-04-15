@@ -1,0 +1,20 @@
+﻿@* 26. *@
+@if (User.Identity.Name == null)
+{
+    <a asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+    <br />
+    <a asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
+}
+else
+{
+    <a asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+    @* 28. yetkiye göre panele yönlendirme *@
+    if (User.IsInRole("Admin"))
+    {
+        <a asp-area="AdminPanel" asp-controller="Panel" asp-action="Index">Admin Paneli'ne git</a>
+    }
+    else
+    {
+        <a asp-area="UyePanel" asp-controller="Panel" asp-action="Index">Üye Paneli'ne git</a>
+    }
+}

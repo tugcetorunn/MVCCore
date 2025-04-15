@@ -3,23 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore-1", "MVCCore-1\MVCCore-1.csproj", "{BC0C5867-2DCB-49EC-87CC-D659630587E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCCore-1", "MVCCore-1\MVCCore-1.csproj", "{BC0C5867-2DCB-49EC-87CC-D659630587E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore-2", "MVCCore-2\MVCCore-2.csproj", "{EBDDDC4E-F2A9-4004-88D3-F7334D416684}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCCore-2", "MVCCore-2\MVCCore-2.csproj", "{EBDDDC4E-F2A9-4004-88D3-F7334D416684}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore-3-ViewModel", "MVCCore-3-ViewModel\MVCCore-3-ViewModel.csproj", "{28E5A130-0AB9-47C6-BDA8-94E3561A52DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCCore-3-ViewModel", "MVCCore-3-ViewModel\MVCCore-3-ViewModel.csproj", "{28E5A130-0AB9-47C6-BDA8-94E3561A52DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore-4-Validations", "MVCCore-4-Validations\MVCCore-4-Validations.csproj", "{0F779A87-5AF0-4A7D-8DD8-6C1319DA8A83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCCore-4-Validations", "MVCCore-4-Validations\MVCCore-4-Validations.csproj", "{0F779A87-5AF0-4A7D-8DD8-6C1319DA8A83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore-5-Uygulama", "MVCCore-5-Uygulama\MVCCore-5-Uygulama.csproj", "{9B35368C-1D19-4159-B97C-2982D4638869}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCCore-5-Uygulama", "MVCCore-5-Uygulama\MVCCore-5-Uygulama.csproj", "{9B35368C-1D19-4159-B97C-2982D4638869}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore-6-CookieSession", "MVCCore-6-CookieSession\MVCCore-6-CookieSession.csproj", "{61460783-1ED4-4A58-95F3-D03C18FC6EA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCCore-6-CookieSession", "MVCCore-6-CookieSession\MVCCore-6-CookieSession.csproj", "{61460783-1ED4-4A58-95F3-D03C18FC6EA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore7Uygulama", "MVCCore7Uygulama\MVCCore7Uygulama.csproj", "{3B3C16F0-065B-4296-9BB0-3CC35BA5CF37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCCore7Uygulama", "MVCCore7Uygulama\MVCCore7Uygulama.csproj", "{3B3C16F0-065B-4296-9BB0-3CC35BA5CF37}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore8Identity", "MVCCore8Identity\MVCCore8Identity.csproj", "{52C0AAFA-6A41-4472-A864-58384BA7AA58}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore9ManuelIdentity", "MVCCore9ManuelIdentity\MVCCore9ManuelIdentity.csproj", "{9CBC3581-442B-4CE4-969A-155CC3AF4335}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore10IdentityTT", "MVCCore10IdentityTT\MVCCore10IdentityTT.csproj", "{C5B8589B-B5A7-4222-A867-6F2681EA0738}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{9CBC3581-442B-4CE4-969A-155CC3AF4335}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CBC3581-442B-4CE4-969A-155CC3AF4335}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CBC3581-442B-4CE4-969A-155CC3AF4335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5B8589B-B5A7-4222-A867-6F2681EA0738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5B8589B-B5A7-4222-A867-6F2681EA0738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5B8589B-B5A7-4222-A867-6F2681EA0738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5B8589B-B5A7-4222-A867-6F2681EA0738}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
