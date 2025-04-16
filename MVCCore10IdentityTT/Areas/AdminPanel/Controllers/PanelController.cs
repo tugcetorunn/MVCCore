@@ -11,5 +11,6 @@ namespace MVCCore10IdentityTT.Areas.AdminPanel.Controllers
         {
             return View();
         }
+
     }
 }

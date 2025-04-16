@@ -70,7 +70,7 @@ namespace MVCCore10IdentityTT.Controllers
                     Email = vm.Email,
                     Ad = vm.Ad,
                     Soyad = vm.Soyad,
-                    Adres = vm.Adres
+                    Adres = vm.Adres,
                 };
 
                 // 29.

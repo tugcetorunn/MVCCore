@@ -39,6 +39,23 @@ namespace MVCCore9ManuelIdentity.Data
 
             // identity 17. adım migration silip yeniden oluşturuyoruz.
             // concurrency stamp ve security stamp ne araştır???
+
+            builder.Entity<Kategori>().HasData(
+                new Kategori
+                {
+                    KategoriId = 1,
+                    KategoriAdi = "Elektronik"
+                },
+                new Kategori
+                {
+                    KategoriId = 2,
+                    KategoriAdi = "Giyim"
+                },
+                new Kategori
+                {
+                    KategoriId = 3,
+                    KategoriAdi = "Yiyecek"
+                });
         }
 
     }

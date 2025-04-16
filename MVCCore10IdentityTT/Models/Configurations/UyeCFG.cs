@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MVCCore10IdentityTT.Models.Configurations
@@ -20,7 +21,7 @@ namespace MVCCore10IdentityTT.Models.Configurations
                 .IsRequired()
                 .HasMaxLength(100);
 
-            builder.HasData(new Uye
+            Uye user = new Uye
             {
                 Id = 1,
                 Ad = "Tugce",
@@ -32,7 +33,11 @@ namespace MVCCore10IdentityTT.Models.Configurations
                 NormalizedEmail = "TTORUN@HOTMAIL.COM",
                 ConcurrencyStamp = Guid.NewGuid().ToString(),
                 SecurityStamp = Guid.NewGuid().ToString()
-            });
+            };
+
+            PasswordHasher<Uye> passwordHasher = new PasswordHasher<Uye>();
+            user.PasswordHash = passwordHasher.HashPassword(user, "Tug_123");
+            builder.HasData(user);
         }
     }
 }

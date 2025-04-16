@@ -23,6 +23,7 @@
     <Folder Include="Areas\AdminPanel\Models\" />
     <Folder Include="Areas\UyePanel\Data\" />
     <Folder Include="Areas\UyePanel\Models\" />
+    <Folder Include="ViewModels\Paneller\" />
   </ItemGroup>
 
 </Project>

@@ -211,14 +211,24 @@ namespace MVCCore9ManuelIdentity.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "3464cc65-a3d5-4055-add8-e2b01a4ce49e", "Admin", "ADMIN" },
-                    { 2, "3e974a55-3d79-42ed-93f3-df6cdde9c07d", "Uye", "UYE" }
+                    { 1, "37ac6ac6-597a-446e-8bf7-f50c4f30e3e6", "Admin", "ADMIN" },
+                    { 2, "7a9ca83b-399d-49a2-95ee-7c369b3a61f9", "Uye", "UYE" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Ad", "Adres", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Soyad", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, 0, "Super", "Server", "51feb79e-8d1c-4470-aabc-f35578888569", "super@user.com", false, false, null, "SUPER@USER.COM", "SPRUSER", "AQAAAAIAAYagAAAAEBOSHuHoIdXRq/NvCzPsW6J4TxUHpz3QvbryQDn/WPSfDfYmVDR5xch19JreQ7qUow==", null, false, "8970b5fb-e5df-4e53-bd3c-502f76cd9b87", "User", false, "sprUser" });
+                values: new object[] { 1, 0, "Super", "Server", "c3c720dc-1f55-464f-9c3e-66a87af3dec1", "super@user.com", false, false, null, "SUPER@USER.COM", "SPRUSER", "AQAAAAIAAYagAAAAEAyN051KwJIisbjEj6n5Yoq+qBZGa9+J1DxsfKsolFdVQmXwLnkhXQPDcQcHtuN17Q==", null, false, "69607ce6-efc0-43e7-a7ef-ab888ecc5097", "User", false, "sprUser" });
+
+            migrationBuilder.InsertData(
+                table: "Kategoriler",
+                columns: new[] { "KategoriId", "KategoriAdi" },
+                values: new object[,]
+                {
+                    { 1, "Elektronik" },
+                    { 2, "Giyim" },
+                    { 3, "Yiyecek" }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

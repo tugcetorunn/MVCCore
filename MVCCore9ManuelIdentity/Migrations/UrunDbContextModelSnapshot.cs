@@ -37,6 +37,23 @@ namespace MVCCore9ManuelIdentity.Migrations
                     b.HasKey("KategoriId");
 
                     b.ToTable("Kategoriler");
+
+                    b.HasData(
+                        new
+                        {
+                            KategoriId = 1,
+                            KategoriAdi = "Elektronik"
+                        },
+                        new
+                        {
+                            KategoriId = 2,
+                            KategoriAdi = "Giyim"
+                        },
+                        new
+                        {
+                            KategoriId = 3,
+                            KategoriAdi = "Yiyecek"
+                        });
                 });
 
             modelBuilder.Entity("MVCCore9ManuelIdentity.Models.Rol", b =>
@@ -72,14 +89,14 @@ namespace MVCCore9ManuelIdentity.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "3464cc65-a3d5-4055-add8-e2b01a4ce49e",
+                            ConcurrencyStamp = "37ac6ac6-597a-446e-8bf7-f50c4f30e3e6",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "3e974a55-3d79-42ed-93f3-df6cdde9c07d",
+                            ConcurrencyStamp = "7a9ca83b-399d-49a2-95ee-7c369b3a61f9",
                             Name = "Uye",
                             NormalizedName = "UYE"
                         });
@@ -209,15 +226,15 @@ namespace MVCCore9ManuelIdentity.Migrations
                             AccessFailedCount = 0,
                             Ad = "Super",
                             Adres = "Server",
-                            ConcurrencyStamp = "51feb79e-8d1c-4470-aabc-f35578888569",
+                            ConcurrencyStamp = "c3c720dc-1f55-464f-9c3e-66a87af3dec1",
                             Email = "super@user.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPER@USER.COM",
                             NormalizedUserName = "SPRUSER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBOSHuHoIdXRq/NvCzPsW6J4TxUHpz3QvbryQDn/WPSfDfYmVDR5xch19JreQ7qUow==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAyN051KwJIisbjEj6n5Yoq+qBZGa9+J1DxsfKsolFdVQmXwLnkhXQPDcQcHtuN17Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8970b5fb-e5df-4e53-bd3c-502f76cd9b87",
+                            SecurityStamp = "69607ce6-efc0-43e7-a7ef-ab888ecc5097",
                             Soyad = "User",
                             TwoFactorEnabled = false,
                             UserName = "sprUser"
