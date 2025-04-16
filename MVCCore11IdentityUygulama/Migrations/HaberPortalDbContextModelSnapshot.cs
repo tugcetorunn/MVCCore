@@ -105,15 +105,15 @@ namespace MVCCore11IdentityUygulama.Migrations
                             Id = 1,
                             AccessFailedCount = 0,
                             Ad = "Pelin",
-                            ConcurrencyStamp = "62ab396b-a0e4-4ff8-affe-05469f9542fe",
+                            ConcurrencyStamp = "26b1e324-70e2-48bd-bd51-f47a4c79f773",
                             Email = "py@hotmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "PY@HOTMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKFoux2ASrUFkh7DOpfBpizko26oXI3eB7c8dXCKH3Jp94IIfibOiGpkrjuxkmL2Dg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGWaLcsCt8LvrM6z4tEF3P1aEHnaFkynqpvtTqp8a/CKe9h+Vnxjx+X+qGSsstv87w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "755a9862-4450-4ddd-8693-7b44af9e4ad6",
+                            SecurityStamp = "26b7abf1-87ba-4a6d-8b35-0a606e8fad39",
                             Soyad = "Yılmaz",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
@@ -234,14 +234,14 @@ namespace MVCCore11IdentityUygulama.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "ada34a39-ece8-4d6b-8ebf-613176930540",
+                            ConcurrencyStamp = "08d25007-b2a3-4f3b-a58c-cea207870916",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "81605577-a441-4e4a-9e6a-d425b2f8395e",
+                            ConcurrencyStamp = "45e5e364-8b36-4f86-98b7-429a947bc52c",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         });
@@ -335,6 +335,11 @@ namespace MVCCore11IdentityUygulama.Migrations
                         {
                             UserId = 1,
                             RoleId = 1
+                        },
+                        new
+                        {
+                            UserId = 1,
+                            RoleId = 2
                         });
                 });
 

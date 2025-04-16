@@ -13,5 +13,7 @@ namespace MVCCore11IdentityUygulama.ViewModels.Haberler
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime OlusturulmaTarihi { get; set; }
         public string Kategori { get; set; }
+        [Display(Name = "Editör")]
+        public string Editor { get; set; }
     }
 }

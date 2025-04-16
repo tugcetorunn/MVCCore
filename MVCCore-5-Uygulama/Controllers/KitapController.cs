@@ -148,7 +148,8 @@ namespace MVCCore_5_Uygulama.Controllers
                     YazarId = kitap.YazarId,
                     Fiyat = kitap.Fiyat,
                     KategoriId = kitap.KategoriId,
-                    YayineviId = kitap.YayineviId
+                    YayineviId = kitap.YayineviId,
+                    KapakResmiUrl = kitap.KapakResmiUrl
                 };
 
                 if (kitap.KapakResmiDosya != null)

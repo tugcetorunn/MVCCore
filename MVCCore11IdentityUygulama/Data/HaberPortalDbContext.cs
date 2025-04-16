@@ -37,6 +37,11 @@ namespace MVCCore11IdentityUygulama.Data
                 {
                     RoleId = 1,
                     UserId = 1
+                },
+                new IdentityUserRole<int>
+                {
+                    RoleId = 2,
+                    UserId = 1
                 });
         }
     }

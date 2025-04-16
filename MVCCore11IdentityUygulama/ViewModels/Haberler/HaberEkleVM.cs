@@ -4,6 +4,7 @@ namespace MVCCore11IdentityUygulama.ViewModels.Haberler
 {
     public class HaberEkleVM
     {
+        public int HaberId { get; set; }
         [Display(Name = "Haber Başlığı")]
         public string Baslik { get; set; }
         public string Detay { get; set; }

@@ -13,5 +13,14 @@
             return fileName;
 
         }
+
+        public static void DeleteImage(string fileName, string folderPath = "wwwroot/images/")
+        {
+            string filePath = folderPath + fileName;
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+        }
     }
 }

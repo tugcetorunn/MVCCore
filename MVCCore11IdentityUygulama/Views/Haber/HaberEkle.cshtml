@@ -1,12 +1,11 @@
 ﻿@model MVCCore11IdentityUygulama.ViewModels.Haberler.HaberEkleFormVM
 
 @{
-    ViewData["Title"] = "HaberEkle";
+    ViewData["Title"] = "Haber Ekle";
 }
 
-<h1>HaberEkle</h1>
+<h1>Yeni Haber Oluştur</h1>
 
-<h4>HaberEkleVM</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -32,7 +31,7 @@
                 <input type="file" asp-for="Haber.ResimDosyasi" class="form-control" />
                 <span asp-validation-for="Haber.ResimDosyasi" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-2">
                 <input type="submit" value="Haber Oluştur" class="btn btn-primary" />
             </div>
         </form>

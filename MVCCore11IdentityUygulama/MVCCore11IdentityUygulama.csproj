@@ -21,11 +21,9 @@
   <ItemGroup>
     <Folder Include="Areas\AdminArea\Data\" />
     <Folder Include="Areas\AdminArea\Models\" />
-    <Folder Include="Areas\AdminArea\Views\" />
     <Folder Include="Areas\EditorArea\Controllers\" />
     <Folder Include="Areas\EditorArea\Data\" />
     <Folder Include="Areas\EditorArea\Models\" />
-    <Folder Include="Areas\EditorArea\Views\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

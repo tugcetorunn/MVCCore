@@ -10,7 +10,8 @@ namespace MVCCore11IdentityUygulama.ViewModels.Haberler
         public string Detay { get; set; }
         public string ResimYolu { get; set; }
         [Display(Name = "Resim")]
-        public IFormFile ResimDosyasi { get; set; }
+        public IFormFile? ResimDosyasi { get; set; }
+        [Display(Name = "Kategori")]
         public int KategoriId { get; set; }
     }
 }
