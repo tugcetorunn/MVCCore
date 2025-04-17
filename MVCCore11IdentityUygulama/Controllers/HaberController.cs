@@ -7,6 +7,7 @@ using MVCCore11IdentityUygulama.Data;
 using MVCCore11IdentityUygulama.Models;
 using MVCCore11IdentityUygulama.Utilities;
 using MVCCore11IdentityUygulama.ViewModels.Haberler;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MVCCore11IdentityUygulama.Controllers
@@ -32,6 +33,32 @@ namespace MVCCore11IdentityUygulama.Controllers
                 Kategori = x.Kategori.KategoriAdi,
                 Editor = x.Editor.AdSoyad
             }).ToList();
+
+            return View(haberler);
+        }
+
+        public async Task<IActionResult> EditorHaber()
+        {
+            var user = await userManager.GetUserAsync(User);
+
+            var haberler = dbContext.Haberler.Select(x => new HaberListeleVM
+            {
+                HaberId = x.HaberId,
+                Baslik = x.Baslik,
+                ResimYolu = x.ResimYolu,
+                OlusturulmaTarihi = x.OlusturulmaTarihi,
+                Kategori = x.Kategori.KategoriAdi,
+                Editor = x.Editor.Ad + " " + x.Editor.Soyad 
+            }).Where(x => x.Editor == user.Ad + " " + user.Soyad).OrderByDescending(x => x.OlusturulmaTarihi).ToList(); /* x.Editor.AdSoyad dbde bulunmayan bir property old için filtre yapamadı. dikkat !!! (linq hatası veriyor -> InvalidOperationException: The LINQ expression 'DbSet<Haber>()
+              .Join(
+              inner: DbSet<Editor>(),
+              outerKeySelector: h => EF.Property<int?>(h, "EditorId"),
+              innerKeySelector: e => EF.Property<int?>(e, "Id"),
+              resultSelector: (o, i) => new TransparentIdentifier<Haber, Editor>(
+              Outer = o,
+              Inner = i
+              ))
+              .Where(h => h.Inner.AdSoyad == __user_AdSoyad_0)' could not be translated. Additional information: Translation of member 'AdSoyad' on entity type 'Editor' failed.      This         commonly occurs when the specified member is unmapped. Either rewrite the query in a form that can be translated, or switch to client evaluation       explicitly by inserting    a  call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.) */
 
             return View(haberler);
         }
@@ -142,7 +169,7 @@ namespace MVCCore11IdentityUygulama.Controllers
 
                 if (haber.ResimDosyasi != null)
                 {
-                    // FileOperations.DeleteImage(eskihaber.ResimYolu);
+                    // FileOperations.DeleteImage(eskihaber.ResimYolu); // TODO
                     eskihaber.ResimYolu = FileOperations.UploadImage(haber.ResimDosyasi);
                 }
 
@@ -162,7 +189,7 @@ namespace MVCCore11IdentityUygulama.Controllers
             return new SelectList(dbContext.Kategoriler.ToList(), "KategoriId", "KategoriAdi");
         }
 
-        public bool GuncellemeIcınYetkiliMi(int haberId)
+        public bool GuncellemeIcınYetkiliMi(int haberId) // TODO: editorhaber action ı eklendiği için bu kontrol metoduna gerek kalmadı kontrol et...
         {
             //var user = userManager.GetUserAsync(User).Result; bu şekilde yaptığımızda haberler gelmiyor include edilmeli.
             var users = userManager.Users.Include(x => x.Haberler).ToList();
@@ -182,6 +209,10 @@ namespace MVCCore11IdentityUygulama.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Sil(int id)
         {
+            //var haber = dbContext.Haberler.Find(id);
+            //dbContext.Haberler.Remove(haber);
+            //return View();
+
             if (!User.IsInRole("Admin"))
             {
                 ModelState.AddModelError("", "Yetkiniz yok.");

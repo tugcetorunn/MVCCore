@@ -38,7 +38,10 @@ namespace MVCCore11IdentityUygulama.Controllers
             var result = await signInManager.PasswordSignInAsync(user, vm.Password, false, false);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                if(User.IsInRole("Admin"))
+                    return Redirect("~/AdminArea/Panel/Index");
+                else
+                    return Redirect("~/EditorArea/Panel/Index");
             }
             else
             {

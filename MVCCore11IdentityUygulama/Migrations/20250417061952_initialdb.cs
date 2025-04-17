@@ -210,14 +210,14 @@ namespace MVCCore11IdentityUygulama.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "08d25007-b2a3-4f3b-a58c-cea207870916", "Admin", "ADMIN" },
-                    { 2, "45e5e364-8b36-4f86-98b7-429a947bc52c", "Editor", "EDITOR" }
+                    { 1, "212905f1-9387-41f7-a54d-d116b94b5ae7", "Admin", "ADMIN" },
+                    { 2, "7f29bfda-adef-4181-94cd-31e05bec57e9", "Editor", "EDITOR" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Ad", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Soyad", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, 0, "Pelin", "26b1e324-70e2-48bd-bd51-f47a4c79f773", "py@hotmail.com", false, false, null, "PY@HOTMAIL.COM", "ADMIN", "AQAAAAIAAYagAAAAEGWaLcsCt8LvrM6z4tEF3P1aEHnaFkynqpvtTqp8a/CKe9h+Vnxjx+X+qGSsstv87w==", null, false, "26b7abf1-87ba-4a6d-8b35-0a606e8fad39", "Yılmaz", false, "Admin" });
+                values: new object[] { 1, 0, "Pelin", "82456d5c-28ef-4c77-b15c-5b532048d3fe", "py@hotmail.com", false, false, null, "PY@HOTMAIL.COM", "ADMIN", "AQAAAAIAAYagAAAAEAwiMCDnzjCs0p2u/PDvNmzvSgd3LLlB8AkrcFxY83mJ6VrdzsWUzVGm+rFNAw9o8A==", null, false, "c7d6a726-0d74-426c-a061-8a5b3ccdf262", "Yılmaz", false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "Kategoriler",

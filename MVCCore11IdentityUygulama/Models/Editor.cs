@@ -9,6 +9,6 @@ namespace MVCCore11IdentityUygulama.Models
         public string Soyad { get; set; }
         [NotMapped]
         public string AdSoyad => $"{Ad} {Soyad}";
-        public ICollection<Haber> Haberler { get; set; }
+        public ICollection<Haber>? Haberler { get; set; }
     }
 }

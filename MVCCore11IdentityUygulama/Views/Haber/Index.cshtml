@@ -59,11 +59,11 @@
 
                         if (User.IsInRole("Admin"))
                         {
-                            <a asp-route-id="@item.HaberId" asp-action="Sil" class="btn btn-danger mt-2" onclick="return confirm('Emin misiniz?')">Sil</a>
+                            <form asp-action="Sil" asp-route-id="@item.HaberId" method="post" onsubmit="return confirm('Emin misiniz?')" style="display:inline;">
+                                <button type="submit" class="btn btn-danger mt-2">Sil</button>
+                            </form> // güvenlik açığı olmaması için (url ye sil actionını çağırdığımızda httpget url yi direk çalıştırıyor post olmalı actiona girmeli) bu nedenle bu tagın form tagı olması gerek yoksa actiona gitmiyor ve user ın admin olduğunu doğrulayamıyor.
                         }
                     }
-                    
-                    
             </td>
         </tr>
 }

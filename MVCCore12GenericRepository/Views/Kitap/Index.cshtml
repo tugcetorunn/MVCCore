@@ -1,0 +1,76 @@
+﻿@model IEnumerable<MVCCore12GenericRepository.ViewModels.Kitaplar.KitapListeleVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Ekle">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KitapAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KapakResmiUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BasimSayisi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Yazar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Yayinevi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kategori)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <input type="hidden" asp-for="@item.KitapId" /> @* unutma linkler için *@
+        <tr> 
+            <td>
+                @Html.DisplayFor(modelItem => item.KitapAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KapakResmiUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BasimSayisi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yazar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yayinevi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kategori)
+            </td>
+            <td>
+                    <a asp-route-id="@item.KitapId" asp-action="Guncelle" class="btn btn-primary mt-2">Güncelle</a> <br />
+                    <a asp-route-id="@item.KitapId" asp-action="Detay" class="btn btn-success mt-2">Detay</a> <br />
+                    <form asp-action="Sil" asp-route-id="@item.KitapId" method="post" onsubmit="return confirm('Emin misiniz?')" style="display:inline;">
+                        <button type="submit" class="btn btn-danger mt-2">Sil</button>
+                    </form>
+                    
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

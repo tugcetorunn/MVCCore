@@ -5,7 +5,15 @@
     @* <form asp-page="/Auth/Logout" method="post" class="navbar-nav">
         <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
     </form> *@
-    <span>Hoşgeldin @User.Identity.Name</span>
+    <span>Hoşgeldin @User.Identity.Name</span> <br />
+    if (User.IsInRole("Admin"))
+    {
+        <a asp-area="AdminArea" asp-controller="Panel" asp-action="Index">Admin Paneli'ne git</a>
+    }
+    else
+    {
+        <a asp-area="EditorArea" asp-controller="Panel" asp-action="Index">Editör Paneli'ne git</a>
+    }
     <a class="nav-link text-dark" asp-controller="Auth" asp-action="Logout" style="width:200px">Çıkış</a>
 }
 else

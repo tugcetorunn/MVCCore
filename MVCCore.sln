@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore10IdentityTT", "MVCC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore11IdentityUygulama", "MVCCore11IdentityUygulama\MVCCore11IdentityUygulama.csproj", "{CC545375-8220-4DB8-B44D-8CCAF3B7242A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore12GenericRepository", "MVCCore12GenericRepository\MVCCore12GenericRepository.csproj", "{3D86FB05-DA6F-4CCC-81B3-4C8AAD6670C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{CC545375-8220-4DB8-B44D-8CCAF3B7242A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC545375-8220-4DB8-B44D-8CCAF3B7242A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC545375-8220-4DB8-B44D-8CCAF3B7242A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D86FB05-DA6F-4CCC-81B3-4C8AAD6670C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D86FB05-DA6F-4CCC-81B3-4C8AAD6670C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D86FB05-DA6F-4CCC-81B3-4C8AAD6670C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D86FB05-DA6F-4CCC-81B3-4C8AAD6670C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
