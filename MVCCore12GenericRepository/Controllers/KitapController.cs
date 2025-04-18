@@ -24,16 +24,8 @@ namespace MVCCore12GenericRepository.Controllers
         }
         public IActionResult Index()
         {
-            //var kitaplar = kitapRepository.Listele(x => x.Yayinevi, x => x.Yazar, x => x.Kategori).Select(x => new KitapListeleVM
-            //{
-            //    KitapAdi = x.KitapAdi,
-            //    Fiyat = x.Fiyat,
-            //    KapakResmiUrl = x.KapakResmiUrl,
-            //    BasimSayisi = x.BasimSayisi,
-            //    Yazar = x.Yazar.YazarAdSoyad,
-            //    Yayinevi = x.Yayinevi.YayineviAdi,
-            //    Kategori = x.Kategori.KategoriAdi
-            //});
+            //var kitaplar = kitapRepository.Listele(x => x.Yayinevi, x => x.Yazar, x => x.Kategori);
+            //var kitaplarVM = mapper.Map<ICollection<KitapListeleVM>>(kitaplar);
 
             var kitaplar = kitapRepository.IliskiliKitapListele();
 
@@ -42,23 +34,12 @@ namespace MVCCore12GenericRepository.Controllers
 
         public IActionResult Detay(int id)
         {
-            // var kitap = kitapRepository.Bul(id, x => x.Yazar, x => x.Kategori, x => x.Yayinevi);
-            // var kitap = kitapRepository.Bul(id); nav lar gelmez.
+            //var kitap = kitapRepository.Bul(id, x => x.Yazar, x => x.Kategori, x => x.Yayinevi);
+            //var kitap = kitapRepository.Bul(id); // nav lar gelmez.
             //if (kitap != null)
             //{
-            //    KitapDetayVM kitapDetay = new KitapDetayVM
-            //    {
-            //        KitapAdi = kitap.KitapAdi,
-            //        Fiyat = kitap.Fiyat,
-            //        SayfaSayisi = kitap.SayfaSayisi,
-            //        KapakResmiUrl = kitap.KapakResmiUrl,
-            //        Ozet = kitap.Ozet,
-            //        BasimSayisi = kitap.BasimSayisi,
-            //        Yazar = kitap.Yazar.YazarAdSoyad,
-            //        Yayinevi = kitap.Yayinevi.YayineviAdi,
-            //        Kategori = kitap.Kategori.KategoriAdi
-            //    };
-            //    return View(kitapDetay);
+            //    var kitapDetayVM = mapper.Map<KitapDetayVM>(kitap);
+            //    return View(kitapDetayVM);
             //}
             //ModelState.AddModelError("", "Kitap bulunamadı.");
 
@@ -124,6 +105,7 @@ namespace MVCCore12GenericRepository.Controllers
         {
             KitapGuncelleFormVM frm = new KitapGuncelleFormVM
             {
+                Kitap = mapper.Map(kitapRepository.IliskiliKitapDetay(id), new KitapGuncelleVM()),
                 Kategoriler = SelectListOlustur()[0],
                 Yazarlar = SelectListOlustur()[1],
                 Yayinevleri = SelectListOlustur()[2]
@@ -139,7 +121,7 @@ namespace MVCCore12GenericRepository.Controllers
                 Kitap guncelKitap = kitapRepository.Bul(kitap.KitapId);
                 if (guncelKitap != null)
                 {
-                    mapper.Map(guncelKitap, kitap);
+                    guncelKitap = mapper.Map(kitap, guncelKitap);
                     kitapRepository.Guncelle(guncelKitap);
                     return RedirectToAction("Index");
                 }

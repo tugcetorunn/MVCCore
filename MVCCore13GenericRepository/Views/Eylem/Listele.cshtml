@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MVCCore13GenericRepository.ViewModels.Eylemler.EylemListeleVM>
+
+@{
+    ViewData["Title"] = "Listele";
+}
+
+<h1>Listele</h1>
+
+<p>
+    <a asp-action="Ekle">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EylemId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EylemAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EklenmeTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Durum)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <input type="hidden" asp-for="@item.EylemId" />
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EylemId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EylemAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EklenmeTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Durum)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

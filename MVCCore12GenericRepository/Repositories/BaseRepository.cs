@@ -41,13 +41,17 @@ namespace MVCCore12GenericRepository.Repositories
             table.Update(entity);
             context.SaveChanges();
         }
-
         public IEnumerable<TEntity> Listele()
         {
-            return table.ToList();
+            return table.ToList(); // liste döndürdüğümüz için tolist kullanıyoruz. IQueryable döndürürsek listeleme yapamayız. ??
         }
 
-        public IEnumerable<TEntity> Listele(params Expression<Func<TEntity, object>>[]? includes)
+        public IQueryable<TEntity> ListeleQuery()
+        {
+            return table.ToList().AsQueryable(); // nav prop ların gelmesi için queryable döndürüyoruz. include kullanılabilecek bir tip olmuş oluyor. fakat çok sıkışmadıkça kullanmıyoruz. efektif değil.
+        }
+
+        public IEnumerable<TEntity> ListeleExp(params Expression<Func<TEntity, object>>[]? includes)
         {
             IQueryable<TEntity> query = table;
             foreach (var include in includes)

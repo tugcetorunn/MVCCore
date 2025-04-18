@@ -1,0 +1,4 @@
+﻿Üyelik sistemini kullanarak,
+TODO List...
+Kategori(iş, ev, haftasonu, kişisel gelişim) - Eylem adı - Tarih - Açıklama - Durum(yapıldı, yapılmadı)
+generic repo mutlaka olmalı. service kullanımı
