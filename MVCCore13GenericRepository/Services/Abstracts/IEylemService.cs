@@ -8,8 +8,11 @@ namespace MVCCore13GenericRepository.Services.Abstracts
     {
         ICollection<EylemListeleVM> IliskiliListele();
         EylemDetayVM IliskiliDetay(int id);
-        bool Ekle(EylemEklemeVM eylem, Uye uye);
-        EylemEklemeFormVM FormOlustur();
+        bool Ekle(EylemEklemeVM eylem, string username);
+        EylemEklemeFormVM EklemeFormOlustur();
+        EylemGuncelleFormVM GuncellemeFormOlustur(int id);
+        void Sil(int id);
+        void Guncelle(EylemGuncelleVM eylem);
 
     }
 }

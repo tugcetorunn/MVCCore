@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore12GenericRepository"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore13GenericRepository", "MVCCore13GenericRepository\MVCCore13GenericRepository.csproj", "{3EBD3597-9725-4CA1-8965-85B85816B2CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore14ToDoDers", "MVCCore14ToDoDers\MVCCore14ToDoDers.csproj", "{4F09D1AB-CBE1-4465-B780-4A9F0162F535}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{3EBD3597-9725-4CA1-8965-85B85816B2CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EBD3597-9725-4CA1-8965-85B85816B2CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EBD3597-9725-4CA1-8965-85B85816B2CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F09D1AB-CBE1-4465-B780-4A9F0162F535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F09D1AB-CBE1-4465-B780-4A9F0162F535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F09D1AB-CBE1-4465-B780-4A9F0162F535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F09D1AB-CBE1-4465-B780-4A9F0162F535}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

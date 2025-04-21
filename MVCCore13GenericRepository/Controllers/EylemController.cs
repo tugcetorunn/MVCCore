@@ -23,7 +23,7 @@ namespace MVCCore13GenericRepository.Controllers
 
         public IActionResult Ekle()
         {
-            var form = eylemService.FormOlustur();
+            var form = eylemService.EklemeFormOlustur();
 
             return View(form);
         }
@@ -33,34 +33,37 @@ namespace MVCCore13GenericRepository.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (eylemService.Ekle(eylem))
+                if (eylemService.Ekle(eylem, User.Identity.Name))
                 {
                     return RedirectToAction("Listele");
                 }
             }
 
-            var form = eylemService.FormOlustur();
+            var form = eylemService.EklemeFormOlustur();
             return View(form);
         }
 
-        public IActionResult Detay(string id)
+        [HttpPost]
+        public IActionResult Sil(int id)
         {
-            return View();
-        }
-
-        public IActionResult Sil(string id)
-        {
-            return View();
+            eylemService.Sil(id);
+            return RedirectToAction("Listele");
         }
 
         public IActionResult Guncelle(int id)
         {
-            return View();
+            var frm = eylemService.GuncellemeFormOlustur(id);
+            return View(frm);
         }
 
         [HttpPost]
         public IActionResult Guncelle(EylemGuncelleVM eylem)
         {
+            if (ModelState.IsValid)
+            {
+                eylemService.Guncelle(eylem);
+                return RedirectToAction("Listele");
+            }
             return View();
         }
 

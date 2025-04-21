@@ -1,0 +1,48 @@
+﻿@model MVCCore14ToDoDers.ViewModels.Eylemler.EylemEklemeFormVM
+
+@{
+    ViewData["Title"] = "Ekle";
+}
+
+<h1>Ekle</h1>
+
+<h4>EylemEkleVM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Ekle">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Eylem.EylemAdi" class="control-label"></label>
+                <input asp-for="Eylem.EylemAdi" class="form-control" />
+                <span asp-validation-for="Eylem.EylemAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Eylem.EylemTarihi" class="control-label"></label>
+                <input type="" asp-for="Eylem.EylemTarihi" class="form-control" />
+                <span asp-validation-for="Eylem.EylemTarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Eylem.Aciklama" class="control-label"></label>
+                <input asp-for="Eylem.Aciklama" class="form-control" />
+                <span asp-validation-for="Eylem.Aciklama" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Eylem.KategoriId" class="control-label"></label>
+                <select asp-for="Eylem.KategoriId" asp-items="Model.Kategoriler" class="form-control"></select>
+                <span asp-validation-for="Eylem.KategoriId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

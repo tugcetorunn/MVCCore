@@ -183,18 +183,18 @@ namespace MVCCore13GenericRepository.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "900cf392-aa1c-40c8-bb3b-f7a44854c33f",
+                            Id = "ecc7ecbc-42dc-435e-8b83-2d0d4aebe76f",
                             AccessFailedCount = 0,
                             Ad = "Leyla",
-                            ConcurrencyStamp = "e2977576-e9b6-4326-8bbd-acf8b7266720",
+                            ConcurrencyStamp = "4e59c3e1-9eae-4cd9-8b4b-2b68aab15966",
                             Email = "leyla@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "LEYLA@X.COM",
                             NormalizedUserName = "LEYLA",
-                            PasswordHash = "AQAAAAIAAYagAAAAEA+oyHfutJT+ppzwwjw+BGo0XPTu4vC0QkNwRQozAb9ASXXoo87B85qkmTLkeahm4g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHEs2GUK4cFgETo/meehYTDSETmZUaC7FZSUcwwrbe2jO0M2pOD/Us5U/7oSmTpeaw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "77774a7e-12ff-4b81-bf77-73d5959fc486",
+                            SecurityStamp = "e646a57d-edb7-4920-bb0e-a030c976998b",
                             Soyad = "Tekin",
                             TwoFactorEnabled = false,
                             UserName = "leyla"

@@ -13,13 +13,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.EylemId)
+                @Html.DisplayNameFor(model => model.EklenmeTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanlananBitirmeTarihi)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.EylemAdi)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EklenmeTarihi)
+                @Html.DisplayNameFor(model => model.Aciklama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kategori)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Durum)
@@ -30,23 +36,30 @@
     <tbody>
 @foreach (var item in Model) {
             <input type="hidden" asp-for="@item.EylemId" />
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EylemId)
-            </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EklenmeTarihi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlanlananBitirmeTarihi)
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.EylemAdi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EklenmeTarihi)
-            </td>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aciklama)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kategori)
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Durum)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    <a asp-route-id="@item.EylemId" asp-action="Guncelle" class="btn btn-primary mt-2">Güncelle</a> <br />
+                    <form asp-action="Sil" asp-route-id="@item.EylemId" method="post" onsubmit="return confirm('Emin misiniz?')" style="display:inline;">
+                        <button type="submit" class="btn btn-danger mt-2">Sil</button>
+                    </form>
             </td>
         </tr>
 }

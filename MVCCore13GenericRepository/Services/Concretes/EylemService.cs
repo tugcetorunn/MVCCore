@@ -40,14 +40,14 @@ namespace MVCCore13GenericRepository.Services.Concretes
             }
         }
 
-        public bool Ekle(EylemEklemeVM eylem, Uye uye)
+        public bool Ekle(EylemEklemeVM eylem, string username)
         {            
             var eylemEntity = mapper.Map<Eylem>(eylem);
-            eylemEntity.EkleyenUye = uyeService.GetUserId(uye);
+            eylemEntity.EkleyenUye = uyeService.GetUserId(username);
             return eylemRepository.Ekle(eylemEntity);
         }
 
-        public EylemEklemeFormVM FormOlustur()
+        public EylemEklemeFormVM EklemeFormOlustur()
         {
             EylemEklemeFormVM frm = new EylemEklemeFormVM
             {
@@ -57,11 +57,43 @@ namespace MVCCore13GenericRepository.Services.Concretes
 
             return frm;
         }
+        public EylemGuncelleFormVM GuncellemeFormOlustur(int id)
+        {
+            var eylem = eylemRepository.DetayEager(id);
+            EylemGuncelleFormVM frm = new EylemGuncelleFormVM
+            {
+                Eylem = mapper.Map<EylemGuncelleVM>(eylem),
+                Kategoriler = SelectListOlustur(),
+                //Durumlar = new SelectList(Enum.GetNames(typeof(Durum)), "Durum"), güncellemede eski veri geldiği için gelen değer de Durum veya string tipinde bu yüzden burada dönüştürme yapmalıyız. yoksa map hatası alıyoruz.
+                Durumlar = new SelectList(Enum.GetNames(typeof(Durum)), "Durum", eylem.Durum.ToString()), // burada durumu stringe çeviriyoruz.
+            };
+
+            return frm;
+        }
 
         public SelectList SelectListOlustur()
         {
             SelectList selectList = new SelectList(kategoriRepository.Listele(), "KategoriId", "KategoriAd");
             return selectList;
+        }
+
+        public void Sil(int id)
+        {
+            var eylem = eylemRepository.DetayEager(id);
+            if (eylem != null)
+            {
+                eylemRepository.Sil(id);
+            }
+        }
+
+        public void Guncelle(EylemGuncelleVM eylem)
+        {
+            var guncelEylem = eylemRepository.DetayEager(eylem.EylemId);
+            if (guncelEylem != null)
+            {
+                mapper.Map(eylem, guncelEylem);
+                eylemRepository.Guncelle(guncelEylem);
+            }
         }
     }
 }

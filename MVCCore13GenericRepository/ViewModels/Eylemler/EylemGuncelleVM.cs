@@ -11,6 +11,5 @@ namespace MVCCore13GenericRepository.ViewModels.Eylemler
         public DateTime? PlanlananBitirmeTarihi { get; set; }
         public int KategoriId { get; set; }
         public Durum Durum { get; set; }
-        public string EkleyenUye { get; set; }
     }
 }

@@ -61,9 +61,9 @@ namespace MVCCore13GenericRepository.Services.Concretes
             return true;
         }
 
-        public string GetUserId(Uye uye)
+        public string GetUserId(string username)
         {
-            var user = userManager.Users.FirstOrDefault(x => x.UserName == uye.UserName);
+            var user = userManager.Users.FirstOrDefault(x => x.UserName == username);
             return user.Id;
         }
 

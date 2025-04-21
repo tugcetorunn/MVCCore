@@ -8,6 +8,6 @@ namespace MVCCore13GenericRepository.Services.Abstracts
         Task<bool> Login(LoginVM vm);
         Task<bool> Register(RegisterVM vm);
         Task Logout();
-        string GetUserId(Uye uye);
+        string GetUserId(string username);
     }
 }
