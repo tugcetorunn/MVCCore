@@ -64,8 +64,7 @@ namespace MVCCore13GenericRepository.Services.Concretes
             {
                 Eylem = mapper.Map<EylemGuncelleVM>(eylem),
                 Kategoriler = SelectListOlustur(),
-                //Durumlar = new SelectList(Enum.GetNames(typeof(Durum)), "Durum"), güncellemede eski veri geldiği için gelen değer de Durum veya string tipinde bu yüzden burada dönüştürme yapmalıyız. yoksa map hatası alıyoruz.
-                Durumlar = new SelectList(Enum.GetNames(typeof(Durum)), "Durum", eylem.Durum.ToString()), // burada durumu stringe çeviriyoruz.
+                Durumlar = new SelectList(Enum.GetNames(typeof(Durum)), "Durum")
             };
 
             return frm;

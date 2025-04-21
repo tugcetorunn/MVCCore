@@ -7,7 +7,7 @@ using MVCCore13GenericRepository.ViewModels.Eylemler;
 namespace MVCCore13GenericRepository.Controllers
 {
     [Authorize]
-    public class EylemController : Controller
+    public class EylemController : Controller // işlerin userid ye göre gelmesi lazım önemli hemen ayarlanacak
     {
         private readonly IEylemService eylemService;
         public EylemController(IEylemService _eylemService)
@@ -64,7 +64,8 @@ namespace MVCCore13GenericRepository.Controllers
                 eylemService.Guncelle(eylem);
                 return RedirectToAction("Listele");
             }
-            return View();
+            var frm = eylemService.GuncellemeFormOlustur(eylem.EylemId);
+            return View(frm);
         }
 
 

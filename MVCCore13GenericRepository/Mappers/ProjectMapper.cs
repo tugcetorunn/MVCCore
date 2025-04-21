@@ -12,8 +12,8 @@ namespace MVCCore13GenericRepository.Mappers
             CreateMap<Uye, LoginVM>().ReverseMap();
             CreateMap<Uye, RegisterVM>().ReverseMap();
             CreateMap<Eylem, EylemEklemeVM>().ReverseMap();
-            CreateMap<Eylem, EylemListeleVM>().ForMember(dest => dest.Kategori, opt => opt.MapFrom(src => src.Kategori.KategoriAd)).ReverseMap();
-            CreateMap<Eylem, EylemGuncelleVM>().ForMember(dest => dest.KategoriId, opt => opt.MapFrom(src => src.Kategori.KategoriAd)).ReverseMap();
+            CreateMap<Eylem, EylemListeleVM>().ForMember(dest => dest.Kategori, opt => opt.MapFrom(src => src.Kategori.KategoriAd)).ReverseMap(); // destte id belirtip (güncelleme mapte yaşandı) src de ad maplemeye çalışırsak mapper hatası alırız. Error mapping types.
+            CreateMap<Eylem, EylemGuncelleVM>().ReverseMap();
         }
     }
 }
