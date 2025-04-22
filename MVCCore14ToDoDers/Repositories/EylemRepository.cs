@@ -18,7 +18,7 @@ namespace MVCCore14ToDoDers.Repositories
                 Aciklama = x.Aciklama,
                 OlusturmaTarihi = x.OlusturmaTarihi,
                 EylemTarihi = x.EylemTarihi,
-                TamamlandiMi = x.TamamlandiMi,
+                TamamlandiMi = (x.TamamlandiMi) ? "Evet" : "Hayır",
                 KategoriAdi = x.Kategori.KategoriAdi,
                 UserId = x.UserId,
                 EylemAdi = x.EylemAdi

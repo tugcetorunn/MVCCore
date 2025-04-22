@@ -10,7 +10,7 @@ namespace MVCCore14ToDoDers.ViewModels.Eylemler
         public DateTime OlusturmaTarihi { get; set; }
         public DateTime EylemTarihi { get; set; }
         public string Aciklama { get; set; }
-        public bool TamamlandiMi { get; set; }
+        public string TamamlandiMi { get; set; }
         public string KategoriAdi { get; set; }
         public string UserId { get; set; }
     }

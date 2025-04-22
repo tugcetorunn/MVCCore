@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore13GenericRepository"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore14ToDoDers", "MVCCore14ToDoDers\MVCCore14ToDoDers.csproj", "{4F09D1AB-CBE1-4465-B780-4A9F0162F535}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore15ManyToMany", "MVCCore15ManyToMany\MVCCore15ManyToMany.csproj", "{E53ECE69-EDF8-4783-B44E-04B30CF64A70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore16ManyToManyDers", "MVCCore16ManyToManyDers\MVCCore16ManyToManyDers.csproj", "{7166602E-68A8-402C-9DA8-F52F720AB289}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,14 @@ Global
 		{4F09D1AB-CBE1-4465-B780-4A9F0162F535}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F09D1AB-CBE1-4465-B780-4A9F0162F535}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F09D1AB-CBE1-4465-B780-4A9F0162F535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E53ECE69-EDF8-4783-B44E-04B30CF64A70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E53ECE69-EDF8-4783-B44E-04B30CF64A70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E53ECE69-EDF8-4783-B44E-04B30CF64A70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E53ECE69-EDF8-4783-B44E-04B30CF64A70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7166602E-68A8-402C-9DA8-F52F720AB289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7166602E-68A8-402C-9DA8-F52F720AB289}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7166602E-68A8-402C-9DA8-F52F720AB289}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7166602E-68A8-402C-9DA8-F52F720AB289}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

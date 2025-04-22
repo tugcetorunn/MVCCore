@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MVCCore15ManyToMany.ViewModels.Kitap.KitapListeleVM>
+
+@{
+    ViewData["Title"] = "Listele";
+}
+
+<h1>Listele</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KitapAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Onsoz)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SayfaSayisi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Yazarlar)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KitapId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KitapAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Onsoz)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SayfaSayisi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fiyat)
+                </td>
+                <td>
+                    @foreach(var yazar in item.Yazarlar)
+                    {
+                        <li>
+                            @Html.DisplayFor(yazarItem => yazar)
+                        </li>
+                    }
+                </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
