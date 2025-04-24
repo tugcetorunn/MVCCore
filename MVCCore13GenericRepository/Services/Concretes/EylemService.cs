@@ -21,9 +21,10 @@ namespace MVCCore13GenericRepository.Services.Concretes
             uyeService = _uyeService;
             mapper = _mapper;
         }
-        public ICollection<EylemListeleVM> IliskiliListele()
+        public ICollection<EylemListeleVM> IliskiliListele(string username)
         {
-            var eylemler = eylemRepository.ListeleEager().ToList();
+            string uyeId = uyeService.GetUserId(username);
+            var eylemler = eylemRepository.ListeleEager().Where(x => x.EkleyenUye == uyeId).ToList();
             return mapper.Map<ICollection<EylemListeleVM>>(eylemler);
         }
 

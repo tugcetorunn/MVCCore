@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MVCCore17SinavOncesiUygulama.ViewModels.Kitaplar.KitapListeleVM>
+
+@{
+    ViewData["Title"] = "Listele";
+}
+
+<h1>Listele</h1>
+
+<p>
+    <a asp-action="Ekle">Yeni Kitap Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KitapAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ozet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SayfaSayisi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kategoriler)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <input type="hidden" asp-for="@item.KitapId" />
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KitapAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fiyat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ozet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SayfaSayisi)
+                </td>
+                <td>
+                    @foreach(var kategori in item.Kategoriler)
+                    {
+                        <ul>@kategori.KategoriAdi</ul>
+                    }
+            </td>
+            <td>
+                    <a asp-route-id="@item.KitapId" asp-action="Guncelle" class="btn btn-primary mt-2">Güncelle</a> <br />
+                    <a asp-route-id="@item.KitapId" asp-action="Detay" class="btn btn-success mt-2">Detay</a> <br />
+                    <form asp-action="Sil" asp-route-id="@item.KitapId" method="post" onsubmit="return confirm('Emin misiniz?')" style="display:inline;">
+                        <button type="submit" class="btn btn-danger mt-2">Sil</button>
+                    </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

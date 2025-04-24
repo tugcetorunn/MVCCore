@@ -17,7 +17,7 @@ namespace MVCCore13GenericRepository.Controllers
 
         public IActionResult Listele()
         {
-            var eylemler = eylemService.IliskiliListele();
+            var eylemler = eylemService.IliskiliListele(User.Identity.Name);
             return View(eylemler);
         }
 

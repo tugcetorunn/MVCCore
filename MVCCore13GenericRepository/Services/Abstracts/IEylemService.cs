@@ -6,7 +6,7 @@ namespace MVCCore13GenericRepository.Services.Abstracts
 {
     public interface IEylemService
     {
-        ICollection<EylemListeleVM> IliskiliListele();
+        ICollection<EylemListeleVM> IliskiliListele(string uyeId);
         EylemDetayVM IliskiliDetay(int id);
         bool Ekle(EylemEklemeVM eylem, string username);
         EylemEklemeFormVM EklemeFormOlustur();

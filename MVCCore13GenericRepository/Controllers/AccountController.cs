@@ -5,19 +5,22 @@ using System.Threading.Tasks;
 
 namespace MVCCore13GenericRepository.Controllers
 {
-    public class AuthController : Controller
+    public class AccountController : Controller
     {
         private readonly IUyeService uyeService;
-        public AuthController(IUyeService _uyeService)
+        public AccountController(IUyeService _uyeService)
         {
             uyeService = _uyeService;
         }
+
+        [Route("Account/Login")]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [Route("Account/Login")]
         public async Task<IActionResult> Login(LoginVM vm)
         {
             if (!ModelState.IsValid)
