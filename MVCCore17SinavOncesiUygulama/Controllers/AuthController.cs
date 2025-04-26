@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace MVCCore17SinavOncesiUygulama.Controllers
 {
+    /// <summary>
+    /// view den kayıt, giriş, çıkış taleplerini karşılayan ve cevap dönen controller
+    /// </summary>
     public class AuthController : Controller
     {
         private readonly IAuthService authService;
-        private readonly SignInManager<Uye> signInManager;
+        private readonly SignInManager<Uye> signInManager; // browsera kaydedeceği özellikler olduğu için controllerdan yürütüyoruz.
         public AuthController(IAuthService _authService, SignInManager<Uye> _signInManager)
         {
             authService = _authService;
@@ -24,16 +27,15 @@ namespace MVCCore17SinavOncesiUygulama.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM vm)
         {
-            string mesaj;
-            var uye = authService.Login(vm, out mesaj);
-            if (uye != null)
+            var loginResult = authService.Login(vm);
+            if (loginResult.Uye != null)
             {
-                await signInManager.SignInAsync(uye, isPersistent: false);
-                return RedirectToAction("Listele", "Kitap");
+                await signInManager.SignInAsync(loginResult.Uye, isPersistent: false);
+                return RedirectToAction("Index", "Home"); // login başarılı olduğunda tüm ürünlerin listelendiği sayfaya gider
             }
             else
             {
-                ModelState.AddModelError("", mesaj);
+                ModelState.AddModelError("", loginResult.Mesaj);
                 return View(vm);
             }
         }
@@ -49,7 +51,7 @@ namespace MVCCore17SinavOncesiUygulama.Controllers
             if (ModelState.IsValid)
             {
                 if (await authService.Register(vm))
-                    RedirectToAction("Login");
+                    return RedirectToAction("Login");
                 else
                 {
                     ModelState.AddModelError("", "Kayıt işlemi başarısız...");

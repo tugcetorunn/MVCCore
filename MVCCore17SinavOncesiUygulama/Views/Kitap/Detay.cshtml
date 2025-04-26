@@ -1,0 +1,73 @@
+﻿@model MVCCore17SinavOncesiUygulama.ViewModels.Kitaplar.KitapDetayVM
+
+@{
+    ViewData["Title"] = "Detay";
+}
+
+<h1>Detay</h1>
+
+<div>
+    <dl class="row">
+        <hr />
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KitapId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KitapId)
+        </dd>
+        <hr />
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KitapAdi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KitapAdi)
+        </dd>
+        <hr />
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fiyat) TL
+        </dd>
+        <hr />
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Kategoriler)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach(var item in Model.Kategoriler)
+            {
+                <li>@item.KategoriAdi</li> <br />
+            }
+        </dd>
+        <hr />
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ozet)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ozet)
+        </dd>
+        <hr />
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SayfaSayisi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SayfaSayisi)
+        </dd>
+        <hr />
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UyeAd)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UyeAd)
+        </dd>
+        <hr />
+    </dl>
+</div>
+<div>
+    @if (User != null && ViewBag.UserId == Model.UyeId) @* oturumdaki kullanıcı bu kitabı ekleyen kullanıcı mı sorusuna cevap verir, öyleyse güncelle butonunu getirir. her kullanıcı sadece 
+        kendi kitabını güncelleyebilir kısıtını sağlamış oluruz. *@
+    {
+        <a asp-action="Guncelle" asp-route-id="@Model.KitapId" class="btn btn-primary">Güncelle</a>
+    }
+    <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Listeyi gör</a>
+</div>

@@ -7,10 +7,10 @@
 <h1>Listele</h1>
 
 <p>
-    <a asp-action="Ekle">Yeni Kitap Ekle</a>
+    <a class="btn btn-primary" asp-action="Ekle">Yeni Kitap Ekle</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-bordered table-striped text-center align-middle">
+    <thead class="table-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.KitapAdi)
@@ -19,14 +19,9 @@
                 @Html.DisplayNameFor(model => model.Fiyat)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ozet)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.SayfaSayisi)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Kategoriler)
-            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -40,21 +35,12 @@
                     @Html.DisplayFor(modelItem => item.Fiyat)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Ozet)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.SayfaSayisi)
                 </td>
-                <td>
-                    @foreach(var kategori in item.Kategoriler)
-                    {
-                        <ul>@kategori.KategoriAdi</ul>
-                    }
-            </td>
             <td>
-                    <a asp-route-id="@item.KitapId" asp-action="Guncelle" class="btn btn-primary mt-2">Güncelle</a> <br />
-                    <a asp-route-id="@item.KitapId" asp-action="Detay" class="btn btn-success mt-2">Detay</a> <br />
-                    <form asp-action="Sil" asp-route-id="@item.KitapId" method="post" onsubmit="return confirm('Emin misiniz?')" style="display:inline;">
+                    <a asp-route-kitapId="@item.KitapId" asp-action="Guncelle" class="btn btn-primary mt-2">Güncelle</a> <br />
+                    <a asp-route-kitapId="@item.KitapId" asp-action="Detay" class="btn btn-success mt-2">Detay</a> <br />
+                    <form asp-action="Sil" asp-route-kitapId="@item.KitapId" method="post" onsubmit="return confirm('Emin misiniz?')" style="display:inline;">
                         <button type="submit" class="btn btn-danger mt-2">Sil</button>
                     </form>
             </td>

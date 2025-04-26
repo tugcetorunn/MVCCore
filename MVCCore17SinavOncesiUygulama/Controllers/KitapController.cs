@@ -5,10 +5,13 @@ using MVCCore17SinavOncesiUygulama.Abstracts;
 using MVCCore17SinavOncesiUygulama.Models;
 using MVCCore17SinavOncesiUygulama.Services.Abstracts;
 using MVCCore17SinavOncesiUygulama.ViewModels.Kitaplar;
+using System.Diagnostics;
 
 namespace MVCCore17SinavOncesiUygulama.Controllers
 {
-    [Authorize]
+    /// <summary>
+    /// kitap ile ilgili önyüz isteklerini alıp işleyen veri geri döndüren controller
+    /// </summary>
     public class KitapController : Controller
     {
         private readonly IKitapRepository kitapRepository;
@@ -22,6 +25,8 @@ namespace MVCCore17SinavOncesiUygulama.Controllers
             kategoriRepository = _kategoriRepository;
             kitapKategoriRepository = _kitapKategoriRepository;
         }
+
+        [Authorize] 
         public IActionResult Listele()
         {
             var userId = authService.UserIdGetir(User);
@@ -29,76 +34,54 @@ namespace MVCCore17SinavOncesiUygulama.Controllers
             return View(kitaplar);
         }
 
+        // tüm ziyaretçilerin göreceği detay sayfasını da getirdiği için sadece detay actionında authorize yok
+        public IActionResult Detay(int kitapId)
+        {
+            ViewBag.UserId = authService.UserIdGetir(User);
+            var kitapDetay = kitapRepository.DetayGetir(kitapId);
+            return View(kitapDetay);
+        }
+
+        [Authorize]
         public IActionResult Ekle()
         {
-            KitapEkleFormVM form = new KitapEkleFormVM
-            {
-                Kategoriler = new SelectList(kategoriRepository.Listele(), "KategoriId", "KategoriAdi")
-            };
-            return View(form);
+            return View(kitapRepository.EklemeFormuOlustur(authService.UserIdGetir(User)));
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Ekle(KitapEkleVM kitap)
         {
             if (ModelState.IsValid)
             {
-                var yeniKitap = new Kitap
-                {
-                    KitapAdi = kitap.KitapAdi,
-                    Fiyat = kitap.Fiyat,
-                    Ozet = kitap.Ozet,
-                    SayfaSayisi = kitap.SayfaSayisi,
-                    UyeId = authService.UserIdGetir(User)
-                };
-
-                yeniKitap.Kategoriler = new List<KitapKategori>();
-                foreach (var item in kitap.KategoriIdler)
-                {
-                    KitapKategori iliski = new() { KategoriId = item, Kitap = yeniKitap };
-                    yeniKitap.Kategoriler.Add(iliski);
-                    //kitapKategoriRepository.Ekle(iliski);
-                }
-                
-                kitapRepository.Ekle(yeniKitap);
-
+                kitapRepository.KitapEkle(kitap, authService.UserIdGetir(User));
                 return RedirectToAction("Listele");
             }
-            KitapEkleFormVM form = new KitapEkleFormVM
-            {
-                Kategoriler = new SelectList(kategoriRepository.Listele(), "KategoriId", "KategoriAdi"),
-                Kitap = kitap
-            };
+
+            var form = kitapRepository.EklemeFormuOlustur(authService.UserIdGetir(User));
+            form.Kitap = kitap;
             return View(form);
         }
 
         [HttpPost]
-        public IActionResult Sil(int id)
+        [Authorize]
+        public IActionResult Sil(int kitapId)
         {
-            kitapRepository.Sil(id);
+            kitapRepository.Sil(kitapId);
             return RedirectToAction("Listele");
         }
 
-        public IActionResult Guncelle(int id)
+        [Authorize]
+        public IActionResult Guncelle(int kitapId)
         {
-            var kitap = kitapRepository.KitapBul(id);
-            KitapGuncelleFormVM form = new KitapGuncelleFormVM
-            {
-                Kitap = new KitapGuncelleVM
-                {
-                    KitapId = kitap.KitapId,
-                    KitapAdi = kitap.KitapAdi,
-                    Fiyat = kitap.Fiyat,
-                    Ozet = kitap.Ozet,
-                    SayfaSayisi = kitap.SayfaSayisi,
-                    KategoriIdler = kitap.Kategoriler?.Select(k => k.KategoriId).ToList()
-                },
-                Kategoriler = new SelectList(kategoriRepository.Listele(), "KategoriId", "KategoriAdi")
-            };
-            return View(form);
+            var form = kitapRepository.GuncellemeFormuOlustur(kitapId, authService.UserIdGetir(User));
+            if (form != null)
+                return View(form);
+            return RedirectToAction("Login", "Auth"); // kitap null gelirse veya üyenin kitabı değilse logine atar
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Guncelle(KitapGuncelleVM kitap)
         {
             if (ModelState.IsValid)
@@ -107,10 +90,7 @@ namespace MVCCore17SinavOncesiUygulama.Controllers
                 return RedirectToAction("Listele");
             }
 
-            KitapGuncelleFormVM form = new KitapGuncelleFormVM
-            {
-                Kategoriler = new SelectList(kategoriRepository.Listele(), "KategoriId", "KategoriAdi")
-            };
+            var form = kitapRepository.GuncellemeFormuOlustur(kitap.KitapId, authService.UserIdGetir(User));
             return View(form);
         }
     }

@@ -1,8 +1,56 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<MVCCore17SinavOncesiUygulama.ViewModels.Kitaplar.KitapListeleVM>
+@{
+    ViewData["Title"] = "Anasayfa";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Hoşgeldin Ziyaretçi</h1>
+    <h4>Kitap Listesi</h4>
+    <a asp-action="Listele" asp-controller="Kitap" class="btn btn-success mt-2">Benim Kitaplarım</a> <br /> <br />
+    <table class="table table-bordered table-striped text-center align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.KitapAdi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fiyat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SayfaSayisi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UyeAd)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <input type="hidden" asp-for="@item.KitapId" />
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KitapAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fiyat) TL
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SayfaSayisi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UyeAd)
+                    </td>
+                    <td>
+                        <a asp-route-kitapId="@item.KitapId" asp-action="Detay" asp-controller="Kitap" class="btn btn-success mt-2">Detay</a> <br /> @* asp-route-id parametreye değer gönderir ama bu parametre adı id olarak adlandırılırsa gelir, parametre adı ile buradali route adı aynı olmalı yani *@
+                        @if(User != null && ViewBag.UserId == item.UyeId)
+                        {
+                            <a asp-route-kitapId="@item.KitapId" asp-action="Guncelle" asp-controller="Kitap" class="btn btn-secondary mt-2">Güncelle</a> <br />
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

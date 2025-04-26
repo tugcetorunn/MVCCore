@@ -1,11 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MVCCore17SinavOncesiUygulama.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVCCore17SinavOncesiUygulama.ViewModels.Kitaplar
 {
     /// <summary>
-    /// kitap listelenirken kullanıcının göreceği ve view de kullanılacak olan propertyler
+    /// tek bir kitap için olan bilgileri kullanıcıya gösterecek view model
     /// </summary>
-    public class KitapListeleVM
+    public class KitapDetayVM
     {
         [Display(Name = "Kitap Id")]
         public int KitapId { get; set; }
@@ -14,8 +16,12 @@ namespace MVCCore17SinavOncesiUygulama.ViewModels.Kitaplar
         public string KitapAdi { get; set; }
         public decimal Fiyat { get; set; }
 
+        [Display(Name = "Özet")]
+        public string Ozet { get; set; }
+
         [Display(Name = "Sayfa Sayısı")]
         public int SayfaSayisi { get; set; }
+        public ICollection<KitapKategoriVM> Kategoriler { get; set; }
 
         [Display(Name = "Ekleyen Üye")]
         public string UyeAd { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using MVCCore17SinavOncesiUygulama.Models;
+using MVCCore17SinavOncesiUygulama.ResultViewModels;
 using MVCCore17SinavOncesiUygulama.Services.Abstracts;
 using MVCCore17SinavOncesiUygulama.ViewModels.Auth;
 using System.Security.Claims;
@@ -7,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace MVCCore17SinavOncesiUygulama.Services.Concretes
 {
+    /// <summary>
+    /// userManager yardımıyla kullanıcı oluşturma, giriş yapma işlemlerini controller dan uzaklaştırmak üzere oluşturulmuş service
+    /// </summary>
     public class AuthService : IAuthService
     {
         private readonly UserManager<Uye> userManager;
@@ -14,21 +18,31 @@ namespace MVCCore17SinavOncesiUygulama.Services.Concretes
         {
             userManager = _userManager;
         }
-        public Uye Login(LoginVM vm, out string mesaj)
+        public LoginResult Login(LoginVM vm)
         {
-            mesaj = "";
+            LoginResult loginResult = new(); // üyeyi, sonucu ve mesajı döndürecek result class
             var user = userManager.FindByNameAsync(vm.KullaniciAdi).Result;
             if (user != null)
             {
                 var result = userManager.CheckPasswordAsync(user, vm.Sifre).Result;
                 if (result)
                 {
-                    return user;
+                    // signin metodunu controller da çalıştıracağız.
+                    loginResult.Uye = user;
                 }
-                mesaj = "Şifre yanlış.";
+                else
+                {
+                    loginResult.Uye = null;
+                    loginResult.Mesaj = "Şifre yanlış.";
+                }  
             }
-            mesaj = "Kullanıcı bulunamadı.";
-            return null;
+            else 
+            {
+                loginResult.Uye = null;
+                loginResult.Mesaj = "Kullanıcı bulunamadı.";
+            }
+            
+            return loginResult;
         }
 
         public async Task<bool> Register(RegisterVM vm)

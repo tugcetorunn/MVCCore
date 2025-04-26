@@ -2,6 +2,9 @@
 
 namespace MVCCore17SinavOncesiUygulama.ViewModels.Kitaplar
 {
+    /// <summary>
+    /// güncelleme formu için gerekenleri modelleyen class
+    /// </summary>
     public class KitapGuncelleFormVM
     {
         public SelectList Kategoriler { get; set; }

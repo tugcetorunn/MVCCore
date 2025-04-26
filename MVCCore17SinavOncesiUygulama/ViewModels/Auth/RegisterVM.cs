@@ -14,7 +14,7 @@ namespace MVCCore17SinavOncesiUygulama.ViewModels.Auth
 
         [Required(ErrorMessage = "E-posta boş olamaz")]
         [StringLength(100, ErrorMessage = "E-posta en fazla 100 karakter olmalıdır")]
-        [EmailAddress(ErrorMessage = "Geçersiz e-posta adresi")]
+        // [EmailAddress(ErrorMessage = "Geçersiz e-posta adresi")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Kullanıcı adı boş olamaz")]
